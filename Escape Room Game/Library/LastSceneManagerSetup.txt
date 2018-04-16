@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/GavinTest.unity
-=======
 - path: Assets/Scenes/blockout01.unity
->>>>>>> origin/master
   isLoaded: 1
   isActive: 1

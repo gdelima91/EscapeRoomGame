@@ -9,7 +9,7 @@ public class FPSRay : MonoBehaviour {
     private Camera mCamera;
     private GameObject highlightedGO;
     private GameObject holdPos;
-    private bool isPickepObj = false;
+    public bool isPickepObj = false;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +25,7 @@ public class FPSRay : MonoBehaviour {
 
     void ShootRay () {
         RaycastHit hit;
+        Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * 5, Color.red);
 
         if (!isPickepObj) {
 
@@ -34,25 +35,34 @@ public class FPSRay : MonoBehaviour {
                 // Check if the object we're hitting is "Interactable"
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
 
+
                     // Check if this object is a new object 
-                    if (hit.collider.gameObject != highlightedGO) {
+                    if (hit.collider.gameObject == highlightedGO) {
 
-                        // If we had a previously highlighted object, we disable that first.
-                        if (highlightedGO != null) {
-                            highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
-                        }
+                        //// If we had a previously highlighted object, we disable that first.
+                        //if (highlightedGO != null) {
+                        //    highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
+                        //}
 
-                        // We mark the current object as the new highlighted object
-                        highlightedGO = hit.collider.gameObject;
-                        hit.collider.gameObject.GetComponent<Interactable>().ActivateHighLight();
-                        Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                        //// We mark the current object as the new highlighted object
+                        //highlightedGO = hit.collider.gameObject;
+                        //highlightedGO.GetComponent<Interactable>().ActivateHighLight();
+                        //Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                        //Debug.Log("else");
                     }
 
                     // If this object is not a new object, we highlight
                     else {
+                        //highlightedGO = hit.collider.gameObject;
+                        //hit.collider.gameObject.GetComponent<Interactable>().ActivateHighLight();
+                        //Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+
+                        if (highlightedGO != null) {
+                            highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
+                        }
                         highlightedGO = hit.collider.gameObject;
-                        hit.collider.gameObject.GetComponent<Interactable>().ActivateHighLight();
-                        Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+                        highlightedGO.GetComponent<Interactable>().ActivateHighLight();
+
                     }
 
 
@@ -60,6 +70,7 @@ public class FPSRay : MonoBehaviour {
                 else {
                     if (highlightedGO != null) {
                         highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
+                        highlightedGO = null;
                     }
                 }
             }

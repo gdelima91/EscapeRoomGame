@@ -35,7 +35,7 @@ public class PickUp : Interactable{
         }
 
         if (_collider != null) {
-            _collider.isTrigger = true;
+            //_collider.isTrigger = true;
         }
     }
 
@@ -48,7 +48,7 @@ public class PickUp : Interactable{
         }
 
         if (_collider != null) {
-            _collider.isTrigger = false;
+            //_collider.isTrigger = false;
         }
     }
 

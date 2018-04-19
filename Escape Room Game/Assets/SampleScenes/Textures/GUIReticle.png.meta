@@ -5,7 +5,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -31,11 +31,10 @@ TextureImporter:
     aniso: 2
     mipBias: -1
     wrapMode: 1
-  nPOTScale: 0
+  nPOTScale: 1
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
@@ -43,29 +42,25 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
-  alphaIsTransparency: 1
+  alphaIsTransparency: 0
   textureType: 5
   buildTargetSettings:
   - buildTarget: iPhone
     maxTextureSize: 128
     textureFormat: 32
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: Android
     maxTextureSize: 128
     textureFormat: 34
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: BlackBerry
     maxTextureSize: 128
     textureFormat: 34
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: WP8
     maxTextureSize: 128
     textureFormat: 10
     compressionQuality: 50
-    allowsAlphaSplitting: 0
   spriteSheet:
     sprites: []
   spritePackingTag: 

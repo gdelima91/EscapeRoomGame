@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Modular_Bunker_[WW2]/Bunker_PC.unity
+- path: Assets/Scenes/blockout02.unity
   isLoaded: 1
   isActive: 1

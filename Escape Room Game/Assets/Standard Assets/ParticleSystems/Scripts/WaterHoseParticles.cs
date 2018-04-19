@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 namespace UnityStandardAssets.Effects
 {
@@ -38,12 +39,13 @@ namespace UnityStandardAssets.Effects
                     lastSoundTime = Time.time;
                 }
 
-                var col = m_CollisionEvents[i].colliderComponent;
+                //var col = m_CollisionEvents[i].colliderComponent;
 
-                if (col.attachedRigidbody != null)
+                if (other.GetComponent<Rigidbody>() != null)
                 {
                     Vector3 vel = m_CollisionEvents[i].velocity;
-                    col.attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
+                    //col.attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
+                    other.GetComponent<Rigidbody>().AddForce(vel * force, ForceMode.Impulse);
                 }
 
                 other.BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);

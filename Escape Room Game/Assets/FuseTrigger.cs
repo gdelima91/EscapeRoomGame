@@ -15,7 +15,7 @@ public class FuseTrigger : MonoBehaviour {
         fuseSlots = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++) {
             fuseSlots[i] = transform.GetChild(i).transform;
-            print(i);
+            //print(i);
         }
 
         if (youWinText != null) {

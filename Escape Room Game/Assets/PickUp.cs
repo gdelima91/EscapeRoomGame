@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUp : Interactable{
 
+    public float throwMultiplier;
+
     private bool isPickedUp;
     private Rigidbody rb;
     private GameObject holdPos;
@@ -17,13 +19,13 @@ public class PickUp : Interactable{
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-    private void FixedUpdate() {
         if (isPickedUp) {
             SetPickedUpTransform();
         }
+    }
+
+    private void FixedUpdate() {
+        
     }
 
     public void PickUpObj () {
@@ -35,8 +37,10 @@ public class PickUp : Interactable{
         }
 
         if (_collider != null) {
-            //_collider.isTrigger = true;
+            _collider.isTrigger = true;
         }
+
+        gameObject.layer = 2;
     }
 
     public void DropObj () {
@@ -48,8 +52,10 @@ public class PickUp : Interactable{
         }
 
         if (_collider != null) {
-            //_collider.isTrigger = false;
+            _collider.isTrigger = false;
         }
+
+        gameObject.layer = 0;
     }
 
     void SetPickedUpTransform () {

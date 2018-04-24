@@ -146,6 +146,11 @@ public class FPSRay : MonoBehaviour {
 
                         //print("pick up");
                     }
+                    else if( highlightedGO.GetComponent<Lever>() != null )
+                    {
+                        Lever lever = highlightedGO.GetComponent<Lever>();
+                        lever.InteractWithLever( );
+                    }
                 }
             }
         }

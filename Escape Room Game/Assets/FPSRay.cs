@@ -109,7 +109,7 @@ public class FPSRay : MonoBehaviour {
 
                 holdPos.transform.position = hit.point + (-mCamera.transform.TransformDirection(Vector3.forward).normalized * Mathf.Abs(hit.distance - 2));
 
-                print(hit.distance);
+                //print(hit.distance);
                 newDistance = Mathf.Clamp(Vector3.Distance(mCamera.transform.position, hit.point), 1, maxRayDistance);
                 //holdPos.transform.position = mCamera.transform.position + (mCamera.transform.TransformDirection(Vector3.forward).normalized * newDistance);
                 //Debug.Log(mCamera.transform.position + (mCamera.transform.TransformDirection(Vector3.forward).normalized * maxRayDistance));
@@ -133,7 +133,7 @@ public class FPSRay : MonoBehaviour {
                         highlightedGO.GetComponent<PickUp>().DropObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(null);
 
-                        print("drop");
+                        //print("drop");
                     }
                 }
 
@@ -144,7 +144,7 @@ public class FPSRay : MonoBehaviour {
                         highlightedGO.GetComponent<PickUp>().PickUpObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(holdPos);
 
-                        print("pick up");
+                        //print("pick up");
                     }
                 }
             }

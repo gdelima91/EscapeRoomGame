@@ -5,11 +5,15 @@ using UnityEngine;
 public class PickUp : Interactable{
 
     public float throwMultiplier;
+    public bool shouldHoldPos = true;
+    public bool shouldRotate = true;
+    public float inspectDistance = 1;
 
     private bool isPickedUp;
     private Rigidbody rb;
     private GameObject holdPos;
     private Collider _collider;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -60,10 +64,15 @@ public class PickUp : Interactable{
 
     void SetPickedUpTransform () {
         if (holdPos != null) {
-            transform.position = holdPos.transform.position;
-            rb.MovePosition(holdPos.transform.position);
-            transform.rotation = Camera.main.transform.rotation;
-            rb.MoveRotation(Camera.main.transform.rotation);
+            if (shouldHoldPos) {
+                transform.position = holdPos.transform.position;
+                rb.MovePosition(holdPos.transform.position);
+            }
+            
+            if (shouldRotate) {
+                transform.rotation = Camera.main.transform.rotation;
+                rb.MoveRotation(Camera.main.transform.rotation);
+            }
         }
     }
 

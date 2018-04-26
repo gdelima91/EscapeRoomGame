@@ -25,6 +25,63 @@ public class keyPad : MonoBehaviour {
 
     void Update() // needs to be modified, for some reason the door don't rotate to doorHinge at -90, if we wan't it to be pull back then we can just the location that it would stop on
     {
+        if (!openDoor)
+        {
+            if (onTrigger)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    keyPadScreen = true;
+                    onTrigger = false;
+                }
+            }
+
+            if (keyPadScreen) // keypad and it's input ! problem with input|| it has to be input = input +"" to remember the previous input, but this has a problem with keypads it makes 4 copies of the input
+            {
+                if (Input.GetKeyDown(KeyCode.Keypad1))
+                {
+                    //isDone = true;
+                    input = input + "1";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad2))
+                {
+                    input = input + "2";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad3))
+                {
+                    input = input + "3";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad4))
+                {
+                    input = input + "4";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    input = input + "5";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad6))
+                {
+                    input = input + "6";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad7))
+                {
+                    input = input + "7";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad8))
+                {
+                    input = input + "8";
+                }
+                if ( Input.GetKeyDown(KeyCode.Keypad9))
+                {
+                    input = input + "9";
+                }
+                if (Input.GetKeyDown(KeyCode.Keypad0))
+                {
+                    input = input + "0";
+                }
+            }
+        }
+
         if (input == curPassword)
         {
             openDoor = true;
@@ -43,11 +100,6 @@ public class keyPad : MonoBehaviour {
             if (onTrigger)
             {
                 GUI.Box(new Rect(0, 0, 200, 25), "Press 'F' to open keypad");
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    keyPadScreen = true;
-                    onTrigger = false;
-                }
             }
 
             if (keyPadScreen) // keypad and it's input ! problem with input|| it has to be input = input +"" to remember the previous input, but this has a problem with keypads it makes 4 copies of the input
@@ -55,47 +107,46 @@ public class keyPad : MonoBehaviour {
 
                 GUI.Box(new Rect(0, 0, 320, 400), "");
                 GUI.Box(new Rect(5, 5, 310, 25), input);
-                if (GUI.Button(new Rect(5, 35, 100, 100), "1") || Input.GetKey(KeyCode.Keypad1))
+                if (GUI.Button(new Rect(5, 35, 100, 100), "1"))
                 {
                     //isDone = true;
                     input = input + "1";
-
                 }
-                if (GUI.Button(new Rect(110, 35, 100, 100), "2") || Input.GetKeyDown(KeyCode.Keypad2))
+                if (GUI.Button(new Rect(110, 35, 100, 100), "2"))
                 {
-                    input = "2";
+                    input = input + "2";
                 }
-                if (GUI.Button(new Rect(215, 35, 100, 100), "3") || Input.GetKeyDown(KeyCode.Keypad3))
+                if (GUI.Button(new Rect(215, 35, 100, 100), "3"))
                 {
-                    input = "3";
+                    input = input + "3";
                 }
-                if (GUI.Button(new Rect(5, 140, 100, 100), "4") || Input.GetKeyDown(KeyCode.Keypad4))
+                if (GUI.Button(new Rect(5, 140, 100, 100), "4"))
                 {
-                    input = "4";
+                    input = input + "4";
                 }
-                if (GUI.Button(new Rect(110, 140, 100, 100), "5") || Input.GetKeyDown(KeyCode.Keypad5))
+                if (GUI.Button(new Rect(110, 140, 100, 100), "5"))
                 {
-                    input = "5";
+                    input = input + "5";
                 }
-                if (GUI.Button(new Rect(215, 140, 100, 100), "6") || Input.GetKeyDown(KeyCode.Keypad6))
+                if (GUI.Button(new Rect(215, 140, 100, 100), "6"))
                 {
-                    input = "6";
+                    input = input + "6";
                 }
-                if (GUI.Button(new Rect(5, 240, 100, 100), "7") || Input.GetKeyDown(KeyCode.Keypad7))
+                if (GUI.Button(new Rect(5, 240, 100, 100), "7"))
                 {
-                    input = "7";
+                    input = input + "7";
                 }
-                if (GUI.Button(new Rect(110, 240, 100, 100), "8") || Input.GetKeyDown(KeyCode.Keypad8))
+                if (GUI.Button(new Rect(110, 240, 100, 100), "8"))
                 {
-                    input = "8";
+                    input = input + "8";
                 }
-                if (GUI.Button(new Rect(215, 240, 100, 100), "9") || Input.GetKeyDown(KeyCode.Keypad9))
+                if (GUI.Button(new Rect(215, 240, 100, 100), "9"))
                 {
-                    input = "9";
+                    input = input + "9";
                 }
-                if (GUI.Button(new Rect(110, 350, 100, 100), "0") || Input.GetKeyDown(KeyCode.Keypad0))
+                if (GUI.Button(new Rect(110, 350, 100, 100), "0"))
                 {
-                    input = "0";
+                    input = input + "0";
                 }
             }
         }

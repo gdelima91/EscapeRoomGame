@@ -5,9 +5,11 @@ using UnityEngine;
 public class FPSRay : MonoBehaviour {
 
     public float maxRayDistance;
+    public float minHoldDistance;
 
     private Camera mCamera;
     private GameObject highlightedGO;
+    private GameObject heldGO;
     private GameObject holdPos;
     private float holdPosDistance;
     private float newDistance;
@@ -50,38 +52,15 @@ public class FPSRay : MonoBehaviour {
                 
                 // Check if the object we're hitting is "Interactable"
                 if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
-                    
-
-                    // Check if this object is a new object 
-                    if (hit.collider.gameObject == highlightedGO) {
-
-                        //// If we had a previously highlighted object, we disable that first.
-                        //if (highlightedGO != null) {
-                        //    highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
-                        //}
-
-                        //// We mark the current object as the new highlighted object
-                        //highlightedGO = hit.collider.gameObject;
-                        //highlightedGO.GetComponent<Interactable>().ActivateHighLight();
-                        //Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-                        //Debug.Log("else");
-                    }
 
                     // If this object is not a new object, we highlight
-                    else {
-                        //highlightedGO = hit.collider.gameObject;
-                        //hit.collider.gameObject.GetComponent<Interactable>().ActivateHighLight();
-                        //Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-
+                    if (hit.collider.gameObject != highlightedGO && !isPickepObj) {
                         if (highlightedGO != null) {
                             highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                         }
                         highlightedGO = hit.collider.gameObject;
                         highlightedGO.GetComponent<Interactable>().ActivateHighLight();
-
                     }
-
-                    
                 }
                 else if (!isPickepObj) {
                     if (highlightedGO != null) {
@@ -104,21 +83,16 @@ public class FPSRay : MonoBehaviour {
 
     void DynamicHoldPos () {
         if (isPickepObj) {
-            if (hit.distance < maxRayDistance &&
+            if (hit.distance <= maxRayDistance &&
             hit.collider != null) {
 
-                holdPos.transform.position = hit.point + (-mCamera.transform.TransformDirection(Vector3.forward).normalized * Mathf.Abs(hit.distance - 2));
+                holdPos.transform.position = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1.5f, 0, maxRayDistance))));
+                print(Mathf.Clamp(hit.distance, minHoldDistance, maxRayDistance));
 
-                //print(hit.distance);
-                newDistance = Mathf.Clamp(Vector3.Distance(mCamera.transform.position, hit.point), 1, maxRayDistance);
-                //holdPos.transform.position = mCamera.transform.position + (mCamera.transform.TransformDirection(Vector3.forward).normalized * newDistance);
-                //Debug.Log(mCamera.transform.position + (mCamera.transform.TransformDirection(Vector3.forward).normalized * maxRayDistance));
-                //print(hit.distance);
             }
             else {
                 holdPos.transform.localPosition = new Vector3(0, 0, 1.5f);
 
-                //print("new holdpos");
             }
         }
     }

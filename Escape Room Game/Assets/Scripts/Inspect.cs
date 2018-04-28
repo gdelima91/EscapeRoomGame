@@ -76,7 +76,14 @@ public class Inspect : MonoBehaviour {
 
         if (Input.GetButton("Click") &&
             isInspecting) {
-            go.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * speed);
+            //go.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * speed);
+
+            float rotx = (Input.GetAxis("Mouse X") * Time.deltaTime * speed) * Mathf.Deg2Rad;
+            float roty = (Input.GetAxis("Mouse Y") * Time.deltaTime * speed) * Mathf.Deg2Rad;
+
+            go.transform.Rotate(Vector3.up, rotx, Space.Self);
+            go.transform.Rotate(Vector3.right, roty, Space.Self);
+            
 
             string output = Input.GetAxis("Mouse Y").ToString() + ", " + Input.GetAxis("Mouse X").ToString();
             print(output);

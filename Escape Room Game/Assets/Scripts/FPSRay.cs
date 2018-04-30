@@ -87,7 +87,7 @@ public class FPSRay : MonoBehaviour {
             hit.collider != null) {
 
                 holdPos.transform.position = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1.5f, 0, maxRayDistance))));
-                print(Mathf.Clamp(hit.distance, minHoldDistance, maxRayDistance));
+                //print(Mathf.Clamp(hit.distance, minHoldDistance, maxRayDistance));
 
             }
             else {

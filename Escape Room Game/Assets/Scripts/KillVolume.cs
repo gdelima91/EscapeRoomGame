@@ -7,13 +7,18 @@ using UnityEngine;
 public class KillVolume : MonoBehaviour {
 
     public bool b_Active = false;
+    public AudioClip electricitySFX;
 
     private Collider _collider;
     private GameObject lightning;
+    private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
         _collider = GetComponent<Collider>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+        //audioSource.playOnAwake = true;
+        //audioSource.Stop();
 
         _collider.isTrigger = true;
 
@@ -24,13 +29,24 @@ public class KillVolume : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<PlayerHealth>() != null) {
-            other.GetComponent<PlayerHealth>().TakeDamage(other.GetComponent<PlayerHealth>().maxHP);
+        if (b_Active) {
+            if (other.GetComponent<PlayerHealth>() != null) {
+                other.GetComponent<PlayerHealth>().TakeDamage(other.GetComponent<PlayerHealth>().maxHP);
+            }
         }
     }
 
     public void Set_B_Active (bool b) {
         b_Active = b;
         lightning.SetActive(b_Active);
+
+        if (b_Active) {
+            audioSource.Play();
+            print(audioSource.isPlaying);
+        }
+        else {
+            audioSource.Stop();
+            print(audioSource.isPlaying);
+        }
     }
 }

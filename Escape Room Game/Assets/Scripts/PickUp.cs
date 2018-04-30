@@ -37,6 +37,7 @@ public class PickUp : Interactable{
 
         if (rb != null) {
             rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezePosition;
             //rb.isKinematic = true;
         }
 
@@ -52,6 +53,7 @@ public class PickUp : Interactable{
 
         if (rb != null) {
             rb.useGravity = true;
+            rb.constraints = RigidbodyConstraints.None;
             //rb.isKinematic = false;
         }
 

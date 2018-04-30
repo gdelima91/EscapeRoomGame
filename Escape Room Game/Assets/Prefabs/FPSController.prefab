@@ -29,9 +29,6 @@ GameObject:
   - component: {fileID: 114222748844224534}
   - component: {fileID: 114672971703318116}
   - component: {fileID: 82824244245776162}
-  - component: {fileID: 114115649287598514}
-  - component: {fileID: 114449441757721178}
-  - component: {fileID: 114945459975588850}
   m_Layer: 2
   m_Name: FPSController
   m_TagString: Untagged
@@ -79,14 +76,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331238440769812}
-  m_LocalRotation: {x: -0, y: -0.7152164, z: -0, w: 0.6989031}
-  m_LocalPosition: {x: 6.822467, y: 1.012, z: 9.646837}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.74, y: 47.13, z: -17.35}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children:
   - {fileID: 4411949352156082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -91.32201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4411949352156082
 Transform:
   m_ObjectHideFlags: 1
@@ -343,8 +340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981a6c8fbacec3a41a7438c53f8acc21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRayDistance: 3
-  minHoldDistance: 2.25
+  maxRayDistance: 12
+  minHoldDistance: 4.5
   isPickepObj: 0
 --- !u!114 &114108394891580436
 MonoBehaviour:
@@ -358,12 +355,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 17
+  m_RunSpeed: 35
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 5
-  m_StickToGroundForce: 10
-  m_GravityMultiplier: 2
+  m_JumpSpeed: 10
+  m_StickToGroundForce: 5
+  m_GravityMultiplier: 5
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
@@ -372,7 +369,7 @@ MonoBehaviour:
     MaximumX: 90
     smooth: 0
     smoothTime: 5
-  m_UseFovKick: 1
+  m_UseFovKick: 0
   m_FovKick:
     Camera: {fileID: 0}
     originalFov: 0
@@ -397,7 +394,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_UseHeadBob: 1
+  m_UseHeadBob: 0
   m_HeadBob:
     HorizontalBobRange: 0
     VerticalBobRange: 0
@@ -441,24 +438,12 @@ MonoBehaviour:
   m_JumpBob:
     BobDuration: 0.2
     BobAmount: 0.1
-  m_StepInterval: 5
+  m_StepInterval: 10
   m_FootstepSounds:
   - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
---- !u!114 &114115649287598514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331238440769812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fe431ab1d4aeee498ed503706e4682e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
 --- !u!114 &114222748844224534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -482,17 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
---- !u!114 &114449441757721178
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331238440769812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea92394f243e2e42ac0e764942c9fab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114629495203430880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10000
-  inspectDistance: 1
+  inspectDistance: 4.5
 --- !u!114 &114882934530324376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,19 +504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: dd890687fad6a694593dd7b9fc66eedc, type: 2}
---- !u!114 &114945459975588850
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1331238440769812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14ccd0c2ab1f0b946b2c62c6fa6d6876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 100
-  inspectDistance: 1
 --- !u!124 &124480304908636886
 Behaviour:
   m_ObjectHideFlags: 1

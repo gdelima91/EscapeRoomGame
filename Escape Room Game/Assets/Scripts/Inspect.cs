@@ -18,8 +18,13 @@ public class Inspect : MonoBehaviour {
     private bool isInspecting;
     private GameObject go;
 
-	// Use this for initialization
-	void Start () {
+    private bool newDeltaObtained;
+    private Quaternion rotateBy;
+    private float rotateLeftRight = 10;
+    private int rotateUpDown = 10;
+
+    // Use this for initialization
+    void Start () {
         if (GetComponent<FirstPersonController>() != null)  { fpsController = GetComponent<FirstPersonController>(); }
         if (GetComponent<CharacterController>() != null)    { characterController = GetComponent<CharacterController>(); }
         if (GetComponent<FPSRay>() != null)                 { fPSRay = GetComponent<FPSRay>(); }
@@ -74,6 +79,7 @@ public class Inspect : MonoBehaviour {
 
     void RotateInspect () {
 
+
         if (Input.GetButton("Click") &&
             isInspecting) {
             //go.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * speed);
@@ -83,10 +89,9 @@ public class Inspect : MonoBehaviour {
 
             go.transform.Rotate(Vector3.up, rotx, Space.Self);
             go.transform.Rotate(Vector3.right, roty, Space.Self);
-            
 
-            string output = Input.GetAxis("Mouse Y").ToString() + ", " + Input.GetAxis("Mouse X").ToString();
-            print(output);
+            //string output = Input.GetAxis("Mouse Y").ToString() + ", " + Input.GetAxis("Mouse X").ToString();
+            
         }
     }
 

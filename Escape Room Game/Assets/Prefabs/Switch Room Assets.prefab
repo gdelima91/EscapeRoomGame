@@ -1091,6 +1091,8 @@ MonoBehaviour:
   animator: {fileID: 95870852279077974}
   offAnim: {fileID: 9100000, guid: aa8cf726c4a15994ca7456b0cea2993c, type: 2}
   onAnim: {fileID: 9100000, guid: 5db9cf0a42026ad44a7e8bb8ae72e680, type: 2}
+  sparks: {fileID: 1860930242523916, guid: 4515e314a3c70224dadf6e30f3e2ad77, type: 2}
+  sparksSFX: {fileID: 8300000, guid: 193a2da82be87d04fa6382a46d230ab5, type: 3}
 --- !u!114 &114442870738321310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1107,6 +1109,8 @@ MonoBehaviour:
   animator: {fileID: 95513576194926374}
   offAnim: {fileID: 9100000, guid: aa8cf726c4a15994ca7456b0cea2993c, type: 2}
   onAnim: {fileID: 9100000, guid: 5db9cf0a42026ad44a7e8bb8ae72e680, type: 2}
+  sparks: {fileID: 0}
+  sparksSFX: {fileID: 0}
 --- !u!114 &114765549073279992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1123,6 +1127,8 @@ MonoBehaviour:
   animator: {fileID: 95588161293706922}
   offAnim: {fileID: 9100000, guid: aa8cf726c4a15994ca7456b0cea2993c, type: 2}
   onAnim: {fileID: 9100000, guid: 5db9cf0a42026ad44a7e8bb8ae72e680, type: 2}
+  sparks: {fileID: 0}
+  sparksSFX: {fileID: 0}
 --- !u!136 &136000400545129424
 CapsuleCollider:
   m_ObjectHideFlags: 1

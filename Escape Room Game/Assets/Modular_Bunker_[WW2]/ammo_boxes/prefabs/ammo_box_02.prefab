@@ -10,6 +10,9 @@ GameObject:
   - component: {fileID: 436982}
   - component: {fileID: 3315034}
   - component: {fileID: 2368872}
+  - component: {fileID: 114737244202981312}
+  - component: {fileID: 54653795485622886}
+  - component: {fileID: 65040743520046654}
   m_Layer: 0
   m_Name: ammo_box_02
   m_TagString: Untagged
@@ -86,3 +89,46 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189200}
   m_IsPrefabParent: 1
+--- !u!54 &54653795485622886
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65040743520046654
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1986659, y: 0.76360023, z: 2.2237632}
+  m_Center: {x: -0.0029828548, y: 0.000004097819, z: 0.05875235}
+--- !u!114 &114737244202981312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46efc8693e71a6a49b72ccbbcfd74483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highLightMat: {fileID: 2100000, guid: 913872c5ca362a24cafa959ff3a83caa, type: 2}
+  throwMultiplier: 0
+  shouldHoldPos: 1
+  shouldRotate: 1
+  inspectDistance: 1

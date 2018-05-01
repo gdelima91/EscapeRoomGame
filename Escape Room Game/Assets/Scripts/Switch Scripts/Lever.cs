@@ -11,8 +11,11 @@ public class Lever : Interactable
     public GameObject sparks;
     public AudioClip sparksSFX;
     public KillVolume killVolume;
+    public GameObject doorToOpen;
+    public float doorRotation;
 
     private AudioSource audioSource;
+    private bool isReceivingPower = false;
 
     void Start( )
     {
@@ -36,16 +39,20 @@ public class Lever : Interactable
         {
             animator.runtimeAnimatorController = onAnim;
 
-            if (sparks != null) {
-                Instantiate(sparks, transform.position, transform.rotation);
-            }
+            if (isReceivingPower) {
+                if (sparks != null) {
+                    Instantiate(sparks, transform.position, transform.rotation);
+                }
 
-            if (sparksSFX != null) {
-                audioSource.PlayOneShot(sparksSFX);
-            }
+                if (sparksSFX != null) {
+                    audioSource.PlayOneShot(sparksSFX);
+                }
 
-            if (killVolume != null) {
-                killVolume.Set_B_Active(true);
+                if (killVolume != null) {
+                    killVolume.Set_B_Active(true);
+                }
+
+                OpenDoor();
             }
         }
         else
@@ -59,5 +66,27 @@ public class Lever : Interactable
         Debug.Log( "Touched lever" );
 
         
+    }
+
+    private void CheckForPower () {
+        if (isTurnedOn && isReceivingPower) {
+            OpenDoor();
+        }
+    }
+
+    private void OpenDoor () {
+        if(doorToOpen != null) {
+            doorToOpen.transform.eulerAngles = new Vector3(doorToOpen.transform.rotation.x, doorRotation, doorToOpen.transform.rotation.z);
+        }
+    }
+
+    public bool GetIsReceivingPower () {
+        return isReceivingPower;
+    }
+
+    public void SetIsRecevingPower (bool b) {
+        isReceivingPower = b;
+
+        CheckForPower();
     }
 }

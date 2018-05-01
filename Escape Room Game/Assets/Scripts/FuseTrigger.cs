@@ -5,10 +5,10 @@ using UnityEngine;
 public class FuseTrigger : MonoBehaviour {
 
     public FPSRay playerGO;
-    public GameObject youWinText;
+    public Lever leverToPower;
 
     private Transform[] fuseSlots;
-    private int fuseCount = 1;
+    private int fuseCount = 0;
 
     // Use this for initialization
     void Start() {
@@ -16,10 +16,6 @@ public class FuseTrigger : MonoBehaviour {
         for (int i = 0; i < transform.childCount; i++) {
             fuseSlots[i] = transform.GetChild(i).transform;
             //print(i);
-        }
-
-        if (youWinText != null) {
-            youWinText.SetActive(false);
         }
     }
 
@@ -51,8 +47,8 @@ public class FuseTrigger : MonoBehaviour {
 
             fuseCount++;
             if (fuseCount > 3) {
-                if (youWinText != null) {
-                    youWinText.SetActive(true);
+                if (leverToPower != null) {
+                    leverToPower.SetIsRecevingPower(true);
                 }
             }
         }

@@ -12,7 +12,7 @@ public class Lever : Interactable
     public AudioClip sparksSFX;
     public KillVolume killVolume;
     public GameObject doorToOpen;
-    public float doorRotation;
+    public Transform doorRotation;
 
     private AudioSource audioSource;
     private bool isReceivingPower = false;
@@ -76,7 +76,8 @@ public class Lever : Interactable
 
     private void OpenDoor () {
         if(doorToOpen != null) {
-            doorToOpen.transform.eulerAngles = new Vector3(doorToOpen.transform.rotation.x, doorRotation, doorToOpen.transform.rotation.z);
+            doorToOpen.transform.position = doorRotation.position;
+            doorToOpen.transform.rotation = doorRotation.rotation;
         }
     }
 

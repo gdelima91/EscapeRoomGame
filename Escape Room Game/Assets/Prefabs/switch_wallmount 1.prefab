@@ -333,7 +333,7 @@ Animator:
   m_GameObject: {fileID: 1674403271827146}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5db9cf0a42026ad44a7e8bb8ae72e680, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa8cf726c4a15994ca7456b0cea2993c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -360,3 +360,5 @@ MonoBehaviour:
   sparks: {fileID: 1860930242523916, guid: 4515e314a3c70224dadf6e30f3e2ad77, type: 2}
   sparksSFX: {fileID: 8300000, guid: 193a2da82be87d04fa6382a46d230ab5, type: 3}
   killVolume: {fileID: 0}
+  doorToOpen: {fileID: 0}
+  doorRotation: {fileID: 0}

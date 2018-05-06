@@ -5,6 +5,7 @@ using UnityEngine;
 public class FuseTrigger : MonoBehaviour {
 
     public FPSRay playerGO;
+    public Electricity[] thingsToPower;
     public Lever leverToPower;
 
     private Transform[] fuseSlots;
@@ -28,7 +29,7 @@ public class FuseTrigger : MonoBehaviour {
         print("trigger");
 
         // Check if its a fuse item
-        if (other.GetComponent<FuseItem>() != null) {
+        if (other.GetComponent<FuseItem>() != null && fuseCount <= fuseSlots.Length) {
 
             // Check if PickUp script is on it, if it is, then we set isPickedUp to false.
             if (other.GetComponent<PickUp>() != null) {

@@ -97,7 +97,7 @@ public class Inspect : MonoBehaviour {
 
     void InputCheck () {
 
-        if (Input.GetButtonDown("Inspect") && fPSRay.GetHighlightedGO() != null && fPSRay.isPickepObj) {
+        if (Input.GetButtonDown("Inspect") && fPSRay.GetHighlightedGO() != null && fPSRay.isPickepObj && go.GetComponent<PickUp>().canBeInspected) {
             if (isInspecting) {
                 go.GetComponent<PickUp>().shouldRotate = true;
                 go.GetComponent<PickUp>().shouldHoldPos = true;

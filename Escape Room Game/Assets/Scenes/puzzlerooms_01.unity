@@ -1613,6 +1613,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &140317115 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 112432, guid: 1e887bd3e50861e4bb0b864156c04419, type: 2}
@@ -2640,6 +2642,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &258917819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2936,6 +2940,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 274124281}
   m_Mesh: {fileID: 4300006, guid: 42352258f7ed1d9489bcdc76da7e6692, type: 3}
+--- !u!1 &278111447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 278111448}
+  m_Layer: 0
+  m_Name: Sparks Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &278111448
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278111447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.805, y: 8.464, z: 1.825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950557688}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &285188041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,6 +3729,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &382668643 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 145536, guid: 365b0df57c996b34e8c1d55db3d09223, type: 2}
+  m_PrefabInternal: {fileID: 1524232856}
+--- !u!65 &382668649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 382668643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.8908734, y: 5.9058933, z: 1.5727966}
+  m_Center: {x: 0.0026512742, y: -0.0177312, z: 0.015387455}
 --- !u!1 &382773034
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,6 +5134,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &474732572
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7663,6 +7713,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &758627824
 GameObject:
   m_ObjectHideFlags: 0
@@ -10707,6 +10759,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 1
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &1030353575
 GameObject:
   m_ObjectHideFlags: 0
@@ -10800,6 +10854,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1035050223
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11407,6 +11463,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &1086672652
 GameObject:
   m_ObjectHideFlags: 0
@@ -12673,6 +12731,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1237022832
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13088,6 +13148,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!1 &1317827106
 GameObject:
   m_ObjectHideFlags: 0
@@ -15071,6 +15133,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 64908027934131888, guid: 365b0df57c996b34e8c1d55db3d09223,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 365b0df57c996b34e8c1d55db3d09223, type: 2}
   m_IsPrefabParent: 0
@@ -16173,6 +16240,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.8561153, y: 6.1163964, z: 1.7485634}
   m_Center: {x: 0.006580471, y: 0.039188147, z: -0.0020785932}
+--- !u!1 &1644933371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1644933372}
+  m_Layer: 0
+  m_Name: Sparks Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1644933372
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1644933371}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.85, y: 8.545, z: 1.935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950557688}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1645139868
 GameObject:
   m_ObjectHideFlags: 0
@@ -17598,6 +17693,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1801167488
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17990,6 +18087,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1832770056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18254,6 +18353,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1852922291
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18572,6 +18673,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1903817875
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18816,6 +18919,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1949654291}
   m_Mesh: {fileID: 4300026, guid: 2b3aa40a7a9cf6b48b979ec96fd82f5e, type: 3}
+--- !u!1 &1950557687 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1389065282366872, guid: fda3bc2cc9ab378419bdb4f799c770cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999472875}
+--- !u!4 &1950557688 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4285566761581348, guid: fda3bc2cc9ab378419bdb4f799c770cb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999472875}
+--- !u!114 &1950557689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1950557687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0f451d465d5c04abae66e144cdfc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGettingElectricity: 0
 --- !u!1 &1950586430
 GameObject:
   m_ObjectHideFlags: 0
@@ -19444,6 +19569,8 @@ MonoBehaviour:
   shouldHoldPos: 1
   shouldRotate: 1
   inspectDistance: 5
+  canBeInspected: 0
+  inspectBlurb: 
 --- !u!54 &1973606747
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19630,6 +19757,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 2128683513}
     m_Modifications:
+    - target: {fileID: 114712878956460888, guid: fda3bc2cc9ab378419bdb4f799c770cb,
+        type: 2}
+      propertyPath: sparksTransform.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4654776900211062, guid: fda3bc2cc9ab378419bdb4f799c770cb, type: 2}
       propertyPath: m_LocalPosition.x
       value: 15.412
@@ -19672,6 +19804,16 @@ Prefab:
       propertyPath: doorRotation
       value: 
       objectReference: {fileID: 1273236950}
+    - target: {fileID: 114712878956460888, guid: fda3bc2cc9ab378419bdb4f799c770cb,
+        type: 2}
+      propertyPath: sparksTransform.Array.data[0]
+      value: 
+      objectReference: {fileID: 1644933372}
+    - target: {fileID: 114712878956460888, guid: fda3bc2cc9ab378419bdb4f799c770cb,
+        type: 2}
+      propertyPath: sparksTransform.Array.data[1]
+      value: 
+      objectReference: {fileID: 278111448}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fda3bc2cc9ab378419bdb4f799c770cb, type: 2}
   m_IsPrefabParent: 0
@@ -21075,6 +21217,18 @@ MonoBehaviour:
   openDoor: 0
   keyPadScreen: 0
   doorHinge: {fileID: 0}
+--- !u!114 &2110990165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110990162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0f451d465d5c04abae66e144cdfc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGettingElectricity: 0
 --- !u!4 &2118118560 stripped
 Transform:
   m_PrefabParentObject: {fileID: 456518, guid: 940a8db26dca4254788e178009e1368e, type: 2}

@@ -8,6 +8,8 @@ public class PickUp : Interactable{
     public bool shouldHoldPos = true;
     public bool shouldRotate = true;
     public float inspectDistance = 1;
+    public bool canBeInspected = false;
+    public string inspectBlurb;
 
     private bool isPickedUp;
     private Rigidbody rb;

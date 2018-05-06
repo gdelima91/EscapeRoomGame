@@ -10,16 +10,19 @@ public class Lever : Interactable
     public RuntimeAnimatorController onAnim; // down to up anim
     public GameObject sparks;
     public AudioClip sparksSFX;
+    public Transform[] sparksTransform;
     public KillVolume killVolume;
     public GameObject doorToOpen;
     public Transform doorRotation;
 
     private AudioSource audioSource;
     private bool isReceivingPower = false;
+    private Electricity electricity;
 
     void Start( )
     {
         audioSource = GetComponent<AudioSource>();
+        electricity = GetComponent<Electricity>();
         //isTurnedOn = animator.runtimeAnimatorController == offAnim ? false : true;
         if( animator.runtimeAnimatorController == offAnim )
         {
@@ -39,20 +42,8 @@ public class Lever : Interactable
         {
             animator.runtimeAnimatorController = onAnim;
 
-            if (isReceivingPower) {
-                if (sparks != null) {
-                    Instantiate(sparks, transform.position, transform.rotation);
-                }
-
-                if (sparksSFX != null) {
-                    audioSource.PlayOneShot(sparksSFX);
-                }
-
-                if (killVolume != null) {
-                    killVolume.Set_B_Active(true);
-                }
-
-                OpenDoor();
+            if (electricity.isGettingElectricity) {
+                StartCoroutine(PlaySparks());
             }
         }
         else
@@ -68,8 +59,27 @@ public class Lever : Interactable
         
     }
 
+    IEnumerator PlaySparks () {
+        yield return new WaitForSeconds(0.75f);
+        if (sparks != null && sparksTransform.Length > 0) {
+            for (int i = 0; i < sparksTransform.Length; i++) {
+                Instantiate(sparks, sparksTransform[i].transform.position, sparksTransform[i].transform.rotation);
+            }
+        }
+
+        if (sparksSFX != null) {
+            audioSource.PlayOneShot(sparksSFX);
+        }
+
+        if (killVolume != null) {
+            killVolume.Set_B_Active(true);
+        }
+
+        OpenDoor();
+    }
+
     private void CheckForPower () {
-        if (isTurnedOn && isReceivingPower) {
+        if (isTurnedOn && electricity.isGettingElectricity) {
             OpenDoor();
         }
     }

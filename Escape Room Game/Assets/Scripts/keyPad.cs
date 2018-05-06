@@ -10,7 +10,13 @@ public class keyPad : MonoBehaviour {
     public bool openDoor;
     public bool keyPadScreen;
     public Transform doorHinge;
-    
+
+    private Electricity electricity;
+
+    private void Start() {
+        electricity = GetComponent<Electricity>();
+    }
+
     void OnTriggerEnter(Collider other) //trigger box should add in manual key from key's
     {
         onTrigger = true;
@@ -27,7 +33,7 @@ public class keyPad : MonoBehaviour {
     {
         if (!openDoor)
         {
-            if (onTrigger)
+            if (onTrigger && electricity.isGettingElectricity)
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -98,7 +104,7 @@ public class keyPad : MonoBehaviour {
     {
         if (!openDoor)
         {
-            if (onTrigger)
+            if (onTrigger && electricity.isGettingElectricity)
             {
                 GUI.Box(new Rect(0, 0, 200, 25), "Press 'F' to open keypad");
             }

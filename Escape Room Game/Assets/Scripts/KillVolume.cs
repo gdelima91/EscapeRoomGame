@@ -12,6 +12,7 @@ public class KillVolume : MonoBehaviour {
     private Collider _collider;
     private GameObject lightning;
     private AudioSource audioSource;
+    private Electricity electricity;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class KillVolume : MonoBehaviour {
         audioSource = gameObject.GetComponent<AudioSource>();
         //audioSource.playOnAwake = true;
         //audioSource.Stop();
+        electricity = GetComponent<Electricity>();
 
         _collider.isTrigger = true;
 
@@ -29,7 +31,7 @@ public class KillVolume : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (b_Active) {
+        if (electricity.isGettingElectricity) {
             if (other.GetComponent<PlayerHealth>() != null) {
                 other.GetComponent<PlayerHealth>().TakeDamage(other.GetComponent<PlayerHealth>().maxHP);
             }

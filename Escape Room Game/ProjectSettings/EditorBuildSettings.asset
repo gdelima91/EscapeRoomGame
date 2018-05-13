@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Level/LevelPass1.unity
+    guid: 73bf1998303e33941a85ce505dd57162
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/1.unity
+    guid: 66368da101ad829439497ef11e190c99
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/2.unity
+    guid: 53aa6a5c33349564e800cafefe022ae1

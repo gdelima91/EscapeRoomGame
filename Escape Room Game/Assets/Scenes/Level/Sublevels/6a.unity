@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 26.050928, g: 1.087354e-39, b: 2.556998, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000620, guid: ea22104fdfc292d4d942b106b698a289,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -196,69 +197,6 @@ Transform:
   m_Children:
   - {fileID: 477912098}
   - {fileID: 1912143107}
-  - {fileID: 2109035268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2109035267
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2026099310}
-    m_Modifications:
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -73.89108
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 24.070004
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 2.0200005
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 109866, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_Name
-      value: bunker_door_wall_01 (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &2109035268 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 404808, guid: 6c0ded86c272e9c4d97da0319cc88bc7, type: 2}
-  m_PrefabInternal: {fileID: 2109035267}

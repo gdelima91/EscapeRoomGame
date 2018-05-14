@@ -8,9 +8,11 @@ public class CustomSceneManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+
         Load("Player");
         Load("UI");
         Load("1");
+        Load("1a");
     }
 
     public void Load (string sceneName) {
@@ -19,7 +21,7 @@ public class CustomSceneManager : MonoBehaviour {
     }
 
     public void Unload (string sceneName) {
-        if (!SceneManager.GetSceneByName(sceneName).isLoaded)
+        if (SceneManager.GetSceneByName(sceneName).isLoaded)
             SceneManager.UnloadSceneAsync(sceneName);
     }
 }

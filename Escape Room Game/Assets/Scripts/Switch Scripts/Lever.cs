@@ -89,6 +89,9 @@ public class Lever : Interactable
 
     private void OpenDoor () {
         if(doorToOpen != null) {
+            if (doorToOpen.GetComponent<AudioSource>() != null) {
+                doorToOpen.GetComponent<AudioSource>().Play();
+            }
             doorToOpen.transform.position = openDoorTransform.position;
             doorToOpen.transform.rotation = openDoorTransform.rotation;
         }

@@ -13,7 +13,9 @@ public class Lever : Interactable
     public Transform[] sparksTransform;
     public KillVolume killVolume;
     public GameObject doorToOpen;
-    public Transform doorRotation;
+    public Transform openDoorTransform;
+    public GameObject doorToClose;
+    public Transform doorCloseTransform;
 
     private AudioSource audioSource;
     private bool isReceivingPower = false;
@@ -76,6 +78,7 @@ public class Lever : Interactable
         }
 
         OpenDoor();
+        CloseDoor();
     }
 
     private void CheckForPower () {
@@ -86,8 +89,15 @@ public class Lever : Interactable
 
     private void OpenDoor () {
         if(doorToOpen != null) {
-            doorToOpen.transform.position = doorRotation.position;
-            doorToOpen.transform.rotation = doorRotation.rotation;
+            doorToOpen.transform.position = openDoorTransform.position;
+            doorToOpen.transform.rotation = openDoorTransform.rotation;
+        }
+    }
+
+    private void CloseDoor () {
+        if (doorToClose) {
+            doorToClose.transform.position = doorCloseTransform.position;
+            doorToClose.transform.rotation = doorCloseTransform.rotation;
         }
     }
 

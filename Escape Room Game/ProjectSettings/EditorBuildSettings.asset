@@ -9,8 +9,50 @@ EditorBuildSettings:
     path: Assets/Scenes/Level/LevelPass1.unity
     guid: 73bf1998303e33941a85ce505dd57162
   - enabled: 1
+    path: Assets/Scenes/Level/UI.unity
+    guid: ffc7301bbab56954881c410f8cec5352
+  - enabled: 1
+    path: Assets/Scenes/Level/Player.unity
+    guid: 7f153321f03423a47bc8d582ddc8e9a2
+  - enabled: 1
     path: Assets/Scenes/Level/Sublevels/1.unity
     guid: 66368da101ad829439497ef11e190c99
   - enabled: 1
     path: Assets/Scenes/Level/Sublevels/2.unity
     guid: 53aa6a5c33349564e800cafefe022ae1
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/1a.unity
+    guid: 630bea4a0b5064045a3d2045d1fafedf
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/2a.unity
+    guid: a3b5e4cb3b8dea64da5011504d5fa17a
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/3.unity
+    guid: 4df363fff969c3349bcf5f61c26b2086
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/4.unity
+    guid: 721b8be741ab488479cdf5c0e7333bde
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/4a.unity
+    guid: fe0cc609024dfeb4cb1ab5f8260d0ebd
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/5.unity
+    guid: 466d4f047a1f70448b9c7cd893e798ea
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/5a.unity
+    guid: d06f69dee307ef7489562c5043b4bd05
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/6.unity
+    guid: f1986a29016ce83468a5ecdb484c7921
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/6a.unity
+    guid: 1eb44b53aa2e899488ee0ee39c29544a
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/7.unity
+    guid: 03f4fa21fa863714089c577bb1ba02c4
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/7a.unity
+    guid: a533383f301a35e46b7ca0d74945b548
+  - enabled: 1
+    path: Assets/Scenes/Level/Sublevels/7b.unity
+    guid: 68db9728e426e3140b4180c818ff7f29

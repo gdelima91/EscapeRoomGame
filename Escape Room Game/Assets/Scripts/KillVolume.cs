@@ -10,7 +10,7 @@ public class KillVolume : MonoBehaviour {
     public AudioClip electricitySFX;
 
     private Collider _collider;
-    private GameObject lightning;
+    private GameObject[] lightning;
     private AudioSource audioSource;
     private Electricity electricity;
 
@@ -24,14 +24,17 @@ public class KillVolume : MonoBehaviour {
 
         _collider.isTrigger = true;
 
-        if (transform.GetChild(0).gameObject != null)
-            lightning = transform.GetChild(0).gameObject;
+        lightning = new GameObject[transform.childCount];
 
-        lightning.SetActive(b_Active);
+        for (int i = 0; i < transform.childCount; i++) {
+            lightning[i] = transform.GetChild(i).gameObject;
+        }
+
+        SetLightning(b_Active);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (electricity.isGettingElectricity) {
+        if (b_Active) {
             if (other.GetComponent<PlayerHealth>() != null) {
                 other.GetComponent<PlayerHealth>().TakeDamage(other.GetComponent<PlayerHealth>().maxHP);
             }
@@ -40,7 +43,7 @@ public class KillVolume : MonoBehaviour {
 
     public void Set_B_Active (bool b) {
         b_Active = b;
-        lightning.SetActive(b_Active);
+        SetLightning(b_Active);
 
         if (b_Active) {
             audioSource.Play();
@@ -49,6 +52,12 @@ public class KillVolume : MonoBehaviour {
         else {
             audioSource.Stop();
             print(audioSource.isPlaying);
+        }
+    }
+
+    void SetLightning (bool b) {
+        foreach (GameObject lightningGO in lightning) {
+            lightningGO.SetActive(b);
         }
     }
 }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FuseTrigger : MonoBehaviour {
 
-    public FPSRay playerGO;
+    
     public Electricity[] thingsToPower;
     public Lever leverToPower;
+    public int fuseCount = 0;
 
+    private FPSRay playerGO;
     private Transform[] fuseSlots;
-    private int fuseCount = 0;
+    
 
     // Use this for initialization
     void Start() {
@@ -18,6 +20,8 @@ public class FuseTrigger : MonoBehaviour {
             fuseSlots[i] = transform.GetChild(i).transform;
             //print(i);
         }
+        playerGO = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSRay>();
+
     }
 
     // Update is called once per frame
@@ -47,9 +51,10 @@ public class FuseTrigger : MonoBehaviour {
             }
 
             fuseCount++;
+            
             if (fuseCount > 3) {
-                if (leverToPower != null) {
-                    leverToPower.SetIsRecevingPower(true);
+                for (int i = 0; i < thingsToPower.Length; i++) {
+                    thingsToPower[i].isGettingElectricity = true;
                 }
             }
         }

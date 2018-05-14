@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FPSRay : MonoBehaviour {
 
@@ -45,40 +46,36 @@ public class FPSRay : MonoBehaviour {
         
         Debug.DrawRay(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward) * 5, Color.red);
 
-        
+        // Shoot ray
+        if (Physics.Raycast(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward), out hit, maxRayDistance)) {
 
-            // Shoot ray
-            if (Physics.Raycast(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward), out hit, maxRayDistance)) {
-                
-                // Check if the object we're hitting is "Interactable"
-                if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
+            // Check if the object we're hitting is "Interactable"
+            if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
 
-                    // If this object is not a new object, we highlight
-                    if (hit.collider.gameObject != highlightedGO && !isPickepObj) {
-                        if (highlightedGO != null) {
-                            highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
-                        }
-                        highlightedGO = hit.collider.gameObject;
-                        highlightedGO.GetComponent<Interactable>().ActivateHighLight();
-                    }
-                }
-                else if (!isPickepObj) {
+                // If this object is not a new object, we highlight
+                if (hit.collider.gameObject != highlightedGO && !isPickepObj) {
                     if (highlightedGO != null) {
                         highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
-                        highlightedGO = null;
                     }
+                    highlightedGO = hit.collider.gameObject;
+                    highlightedGO.GetComponent<Interactable>().ActivateHighLight();
                 }
-
-                
             }
             else if (!isPickepObj) {
                 if (highlightedGO != null) {
-
                     highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                     highlightedGO = null;
                 }
             }
-        
+        }
+
+        else if (!isPickepObj) {
+            if (highlightedGO != null) {
+
+                highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
+                highlightedGO = null;
+            }
+        }
     }
 
     void DynamicHoldPos () {
@@ -117,6 +114,8 @@ public class FPSRay : MonoBehaviour {
                         isPickepObj = true;
                         highlightedGO.GetComponent<PickUp>().PickUpObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(holdPos);
+                        highlightedGO.transform.parent = null;
+                        SceneManager.MoveGameObjectToScene(highlightedGO, SceneManager.GetSceneByName("Player"));
 
                         //print("pick up");
                     }

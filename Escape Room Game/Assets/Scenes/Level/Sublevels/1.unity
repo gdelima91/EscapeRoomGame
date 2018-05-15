@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000614, guid: ea22104fdfc292d4d942b106b698a289,
+  m_LightingDataAsset: {fileID: 112000624, guid: 881912721b65a5347b3e6a12d2fb3898,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -9343,8 +9343,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1493718548}
-  m_LocalRotation: {x: 0.026585825, y: 0.41983268, z: -0.0124532785, w: 0.9071266}
-  m_LocalPosition: {x: 66.931015, y: -66.58048, z: -32.14619}
+  m_LocalRotation: {x: -0.009688722, y: 0.7132435, z: 0.009863661, w: 0.70078}
+  m_LocalPosition: {x: -1.5827789, y: -65.41072, z: -69.49184}
   m_LocalScale: {x: 1.795811, y: 0.98329395, z: 0.583425}
   m_Children: []
   m_Father: {fileID: 584188372}

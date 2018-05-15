@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 82982587987676258}
   - component: {fileID: 65900648088083626}
   - component: {fileID: 114712878956460888}
+  - component: {fileID: 114213530331264400}
   m_Layer: 0
   m_Name: switch_lever 1
   m_TagString: Untagged
@@ -112,15 +113,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674403271827146}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.412, y: 6.7, z: -7.6168}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.28445637, y: 0.27529687, z: 4.23967}
+  m_LocalScale: {x: 0.061231535, y: 0.061231505, z: 0.03342222}
   m_Children:
   - {fileID: 4879626840869568}
   - {fileID: 4637374816751512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4879626840869568
 Transform:
   m_ObjectHideFlags: 1
@@ -311,7 +312,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -341,6 +342,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114213530331264400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389065282366872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0f451d465d5c04abae66e144cdfc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGettingElectricity: 0
 --- !u!114 &114712878956460888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +371,10 @@ MonoBehaviour:
   offAnim: {fileID: 9100000, guid: aa8cf726c4a15994ca7456b0cea2993c, type: 2}
   onAnim: {fileID: 9100000, guid: 5db9cf0a42026ad44a7e8bb8ae72e680, type: 2}
   sparks: {fileID: 1860930242523916, guid: 4515e314a3c70224dadf6e30f3e2ad77, type: 2}
-  sparksSFX: {fileID: 8300000, guid: 193a2da82be87d04fa6382a46d230ab5, type: 3}
+  sparksSFX: {fileID: 8300000, guid: 00be28a28724cc648b53e65dcac7e386, type: 3}
+  sparksTransform: []
   killVolume: {fileID: 0}
   doorToOpen: {fileID: 0}
-  doorRotation: {fileID: 0}
+  openDoorTransform: {fileID: 0}
+  doorToClose: {fileID: 0}
+  doorCloseTransform: {fileID: 0}

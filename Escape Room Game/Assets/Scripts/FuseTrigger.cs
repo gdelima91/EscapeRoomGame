@@ -38,6 +38,9 @@ public class FuseTrigger : MonoBehaviour {
             // Check if PickUp script is on it, if it is, then we set isPickedUp to false.
             if (other.GetComponent<PickUp>() != null) {
                 other.GetComponent<PickUp>().SetIsPickedUp(false);
+                other.GetComponent<PickUp>().DeactivateHighlight();
+                playerGO.SetHighlightedGO(null);
+                Destroy(other.GetComponent<Interactable>());
             }
 
             if (other.GetComponent<Rigidbody>() != null) {

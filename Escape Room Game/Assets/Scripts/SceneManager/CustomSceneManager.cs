@@ -11,8 +11,8 @@ public class CustomSceneManager : MonoBehaviour {
 
         Load("Player");
         Load("UI");
-        Load("1");
-        Load("1a");
+        //Load("1");
+        //Load("1a");
     }
 
     public void Load (string sceneName) {

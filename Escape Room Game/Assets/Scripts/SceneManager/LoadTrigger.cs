@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LoadTrigger : MonoBehaviour {
 
-    public string[] loadName;
-    public string[] unloadName;
+    public GameObject[] loadName;
+    public GameObject[] unloadName;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.GetComponent<FPSRay>() != null) {
@@ -15,15 +15,15 @@ public class LoadTrigger : MonoBehaviour {
     }
 
     void Load () {
-        foreach (string name in loadName) {
-            CustomSceneManager.Instance.Load(name);
+        foreach (GameObject go in loadName) {
+            CustomSceneManager.Instance.LoadLevel(go);
         }
     }
 
     IEnumerator Unload () {
         yield return new WaitForSeconds(0.1f);
-        foreach (string name in unloadName) {
-            CustomSceneManager.Instance.Unload(name);
+        foreach (GameObject go in unloadName) {
+            CustomSceneManager.Instance.UnloadLevel(go);
         }
     }
 }

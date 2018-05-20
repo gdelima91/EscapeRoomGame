@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4063742447970116, guid: 926adb38dce494d4c991159a76ea86c9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 202.73
+      value: 243.2
       objectReference: {fileID: 0}
     - target: {fileID: 4063742447970116, guid: 926adb38dce494d4c991159a76ea86c9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -165,6 +165,26 @@ Prefab:
     - target: {fileID: 1331238440769812, guid: 926adb38dce494d4c991159a76ea86c9, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 82840169876028662, guid: 926adb38dce494d4c991159a76ea86c9,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82824244245776162, guid: 926adb38dce494d4c991159a76ea86c9,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20054655317224388, guid: 926adb38dce494d4c991159a76ea86c9,
+        type: 2}
+      propertyPath: m_RenderingPath
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 20054655317224388, guid: 926adb38dce494d4c991159a76ea86c9,
+        type: 2}
+      propertyPath: m_HDR
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 926adb38dce494d4c991159a76ea86c9, type: 2}

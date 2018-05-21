@@ -1,24 +1,22 @@
 fileFormatVersion: 2
-guid: 6d6ca5bddf659674994ce9cbfa50d22f
-timeCreated: 1526269083
+guid: de62c9d838b9f0140a13aeb2422871b2
+timeCreated: 1526871968
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: polySurface1
     400000: //RootNode
-    400002: polySurface1
-    2100000: lambert1
-    2300000: polySurface1
-    3300000: polySurface1
+    2100000: lambert5
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: polySurface1
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
+      name: lambert5
     second: {fileID: 2100000, guid: b18de4655a7157346bec08af8077a9ee, type: 2}
   materials:
     importMaterials: 1

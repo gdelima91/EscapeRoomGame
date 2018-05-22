@@ -30,13 +30,13 @@ public class CustomSceneManager : MonoBehaviour {
     }
 
     public void LoadLevel (GameObject go) {
-        if (!go.activeSelf) {
+        if (!go.activeSelf && go!=null) {
             go.SetActive(true);
         }
     }
 
     public void UnloadLevel (GameObject go) {
-        if (go.activeSelf) {
+        if (go.activeSelf && go != null) {
             go.SetActive(false);
         }
     }

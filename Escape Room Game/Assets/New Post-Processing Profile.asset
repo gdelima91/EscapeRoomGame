@@ -45,10 +45,10 @@ MonoBehaviour:
       intensity: 4
       radius: 1000
       sampleCount: 16
-      downsampling: 1
+      downsampling: 0
       forceForwardCompatibility: 0
       ambientOnly: 1
-      highPrecision: 1
+      highPrecision: 0
   screenSpaceReflection:
     m_Enabled: 1
     m_Settings:
@@ -120,7 +120,7 @@ MonoBehaviour:
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: -0.9
+        postExposure: -1.5
         temperature: 0
         tint: 0
         hueShift: 0

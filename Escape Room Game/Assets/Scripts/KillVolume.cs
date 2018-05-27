@@ -47,11 +47,9 @@ public class KillVolume : MonoBehaviour {
 
         if (b_Active) {
             audioSource.Play();
-            print(audioSource.isPlaying);
         }
         else {
             audioSource.Stop();
-            print(audioSource.isPlaying);
         }
     }
 

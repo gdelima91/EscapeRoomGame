@@ -16,6 +16,7 @@ public class Lever : Interactable
     public Transform openDoorTransform;
     public GameObject doorToClose;
     public Transform doorCloseTransform;
+    public bool oneWay = true;
 
     private AudioSource audioSource;
     private bool isReceivingPower = false;
@@ -55,10 +56,11 @@ public class Lever : Interactable
             if (killVolume != null) {
                 killVolume.Set_B_Active(false);
             }
-        }
-        Debug.Log( "Touched lever" );
 
-        
+            if (electricity.isGettingElectricity) {
+                DoorMove();
+            }
+        }
     }
 
     IEnumerator PlaySparks () {
@@ -77,30 +79,46 @@ public class Lever : Interactable
             killVolume.Set_B_Active(true);
         }
 
-        OpenDoor();
-        CloseDoor();
+        DoorMove();
     }
 
+    private void DoorMove () {
+        if (isTurnedOn) {
+            if (doorToOpen != null)
+                OpenDoor(doorToOpen);
+            if (doorToClose != null)
+                CloseDoor(doorToClose);
+        }
+        else if (!oneWay) {
+            if (doorToClose != null)
+                OpenDoor(doorToClose);
+            if (doorToOpen != null)
+                CloseDoor(doorToOpen);
+        }
+    }
     private void CheckForPower () {
         if (isTurnedOn && electricity.isGettingElectricity) {
-            OpenDoor();
+            OpenDoor(doorToOpen);
         }
     }
 
-    private void OpenDoor () {
-        if(doorToOpen != null) {
-            if (doorToOpen.GetComponent<AudioSource>() != null) {
-                doorToOpen.GetComponent<AudioSource>().Play();
+    private void OpenDoor (GameObject _doorToOpen) {
+
+            if (_doorToOpen.GetComponent<AudioSource>() != null) {
+                _doorToOpen.GetComponent<AudioSource>().Play();
             }
-            doorToOpen.transform.position = openDoorTransform.position;
-            doorToOpen.transform.rotation = openDoorTransform.rotation;
-        }
+            _doorToOpen.transform.position = openDoorTransform.position;
+            _doorToOpen.transform.rotation = openDoorTransform.rotation;
+
     }
 
-    private void CloseDoor () {
-        if (doorToClose) {
-            doorToClose.transform.position = doorCloseTransform.position;
-            doorToClose.transform.rotation = doorCloseTransform.rotation;
+    private void CloseDoor (GameObject _doorToClose) {
+        if (doorCloseTransform != null) {
+            _doorToClose.transform.position = doorCloseTransform.position;
+            _doorToClose.transform.rotation = doorCloseTransform.rotation;
+        } else {
+            _doorToClose.transform.localPosition = Vector3.zero;
+            _doorToClose.transform.localEulerAngles = Vector3.zero;
         }
     }
 

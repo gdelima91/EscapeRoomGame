@@ -30,7 +30,6 @@ public class FuseTrigger : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        print("trigger");
 
         // Check if its a fuse item
         if (other.GetComponent<FuseItem>() != null && fuseCount <= fuseSlots.Length) {

@@ -115,9 +115,6 @@ public class FPSRay : MonoBehaviour {
                         highlightedGO.GetComponent<PickUp>().PickUpObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(holdPos);
                         highlightedGO.transform.parent = null;
-                        SceneManager.MoveGameObjectToScene(highlightedGO, SceneManager.GetSceneByName("Player"));
-
-                        //print("pick up");
                     }
                     else if( highlightedGO.GetComponent<Lever>() != null )
                     {

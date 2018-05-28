@@ -12,10 +12,14 @@ public class Lever : Interactable
     public AudioClip sparksSFX;
     public Transform[] sparksTransform;
     public KillVolume killVolume;
-    public GameObject doorToOpen;
-    public Transform openDoorTransform;
-    public GameObject doorToClose;
-    public Transform doorCloseTransform;
+    public GameObject doorToOpen1;
+    public Transform openDoor1Transform;
+    public GameObject doorToClose1;
+    public Transform doorCloseTransform1;
+    public GameObject doorToOpen2;
+    public Transform openDoor2Transform;
+    public GameObject doorToClose2;
+    public Transform doorCloseTransform2;
     public bool oneWay = true;
 
     private AudioSource audioSource;
@@ -84,42 +88,50 @@ public class Lever : Interactable
 
     private void DoorMove () {
         if (isTurnedOn) {
-            if (doorToOpen != null)
-                OpenDoor(doorToOpen);
-            if (doorToClose != null)
-                CloseDoor(doorToClose);
+            if (doorToOpen1 != null)
+                OpenDoor(doorToOpen1, openDoor1Transform);
+            if (doorToOpen2 != null)
+                OpenDoor(doorToOpen2, openDoor2Transform);
+            if (doorToClose1 != null)
+                CloseDoor(doorToClose1, doorCloseTransform1);
+            if (doorToClose2 != null)
+                CloseDoor(doorToClose2, doorCloseTransform2);
         }
         else if (!oneWay) {
-            if (doorToClose != null)
-                OpenDoor(doorToClose);
-            if (doorToOpen != null)
-                CloseDoor(doorToOpen);
+            if (doorToClose1 != null)
+                OpenDoor(doorToClose1, openDoor1Transform);
+            if (doorToClose2 != null)
+                OpenDoor(doorToClose2, openDoor2Transform);
+            if (doorToOpen1 != null)
+                CloseDoor(doorToOpen1, doorCloseTransform1);
+            if (doorToOpen2 != null)
+                CloseDoor(doorToOpen2, doorCloseTransform2);
         }
     }
     private void CheckForPower () {
         if (isTurnedOn && electricity.isGettingElectricity) {
-            OpenDoor(doorToOpen);
+            DoorMove();
         }
     }
 
-    private void OpenDoor (GameObject _doorToOpen) {
+    private void OpenDoor (GameObject _doorToOpen, Transform _openDoorTransform) {
+        if (_doorToOpen.GetComponent<AudioSource>() != null) {
+            _doorToOpen.GetComponent<AudioSource>().Play();
+        }
+        _doorToOpen.transform.position = _openDoorTransform.position;
+        _doorToOpen.transform.rotation = _openDoorTransform.rotation;
+    }
 
-            if (_doorToOpen.GetComponent<AudioSource>() != null) {
-                _doorToOpen.GetComponent<AudioSource>().Play();
-            }
-            _doorToOpen.transform.position = openDoorTransform.position;
-            _doorToOpen.transform.rotation = openDoorTransform.rotation;
-
+    private void CloseDoor (GameObject _doorToClose, Transform _doorCloseTransform) {
+        if (doorCloseTransform1 != null) {
+            _doorToClose.transform.position = _doorCloseTransform.position;
+            _doorToClose.transform.rotation = _doorCloseTransform.rotation;
+        }
     }
 
     private void CloseDoor (GameObject _doorToClose) {
-        if (doorCloseTransform != null) {
-            _doorToClose.transform.position = doorCloseTransform.position;
-            _doorToClose.transform.rotation = doorCloseTransform.rotation;
-        } else {
-            _doorToClose.transform.localPosition = Vector3.zero;
-            _doorToClose.transform.localEulerAngles = Vector3.zero;
-        }
+        _doorToClose.transform.localPosition = Vector3.zero;
+        _doorToClose.transform.localEulerAngles = Vector3.zero;
     }
 
     public bool GetIsReceivingPower () {

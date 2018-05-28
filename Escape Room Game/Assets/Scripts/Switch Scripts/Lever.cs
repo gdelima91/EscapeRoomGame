@@ -86,25 +86,26 @@ public class Lever : Interactable
         DoorMove();
     }
 
+    // Fix Validation
     private void DoorMove () {
         if (isTurnedOn) {
-            if (doorToOpen1 != null)
+            if (doorToOpen1 != null && openDoor1Transform != null)
                 OpenDoor(doorToOpen1, openDoor1Transform);
-            if (doorToOpen2 != null)
+            if (doorToOpen2 != null && openDoor2Transform != null)
                 OpenDoor(doorToOpen2, openDoor2Transform);
-            if (doorToClose1 != null)
+            if (doorToClose1 != null && doorCloseTransform1 != null)
                 CloseDoor(doorToClose1, doorCloseTransform1);
-            if (doorToClose2 != null)
+            if (doorToClose2 != null && doorCloseTransform2 != null)
                 CloseDoor(doorToClose2, doorCloseTransform2);
         }
         else if (!oneWay) {
-            if (doorToClose1 != null)
+            if (doorToClose1 != null && openDoor1Transform != null)
                 OpenDoor(doorToClose1, openDoor1Transform);
-            if (doorToClose2 != null)
+            if (doorToClose2 != null && openDoor2Transform != null)
                 OpenDoor(doorToClose2, openDoor2Transform);
-            if (doorToOpen1 != null)
+            if (doorToOpen1 != null && doorCloseTransform1 != null)
                 CloseDoor(doorToOpen1, doorCloseTransform1);
-            if (doorToOpen2 != null)
+            if (doorToOpen2 != null && doorCloseTransform2 != null)
                 CloseDoor(doorToOpen2, doorCloseTransform2);
         }
     }

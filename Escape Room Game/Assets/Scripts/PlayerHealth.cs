@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
 
+    public CheckPoint checkPoint;
     public int maxHP;
 
     private int currentHP;
@@ -13,17 +14,21 @@ public class PlayerHealth : MonoBehaviour {
 	void Start () {
         currentHP = maxHP;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    void Update( )
+    {
+        if( Input.GetKeyDown(KeyCode.L) )
+        {
+            TakeDamage( 1000 );
+        }
+    }
 
     public void TakeDamage (int damage) {
         currentHP = currentHP - damage;
 
         if (currentHP <= 0) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            transform.position = checkPoint.ResetPlayer( );
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

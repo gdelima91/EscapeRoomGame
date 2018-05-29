@@ -12,21 +12,16 @@ public class Lever : Interactable
     public AudioClip sparksSFX;
     public Transform[] sparksTransform;
     public KillVolume killVolume;
+    public bool oneWay = true;
 
     [Header("Bunkers")]
     public Bunker[] openBunkers;
     public Bunker[] closeBunkers;
 
-    public GameObject doorToOpen1;
-    public Transform openDoor1Transform;
-    public GameObject doorToClose1;
-    public Transform doorCloseTransform1;
-    public GameObject doorToOpen2;
-    public Transform openDoor2Transform;
-    public GameObject doorToClose2;
-    public Transform doorCloseTransform2;
-    public bool oneWay = true;
+    [Header("Vault Door")]
+    public DoorManager doorManager;
 
+    private bool hasActivatedDoorManager = false;
     private AudioSource audioSource;
     private bool isReceivingPower = false;
     private Electricity electricity;
@@ -56,6 +51,10 @@ public class Lever : Interactable
 
             if (electricity.isGettingElectricity) {
                 StartCoroutine(PlaySparks());
+                if (!hasActivatedDoorManager && doorManager != null) {
+                    hasActivatedDoorManager = true;
+                    doorManager.UnLock();
+                }
             }
         }
         else
@@ -113,18 +112,18 @@ public class Lever : Interactable
         }
         else if( !oneWay )
         {
-            for( int i = 0; i < openBunkers.Length; i++ )
-            {
-                if( openBunkers[i] != null )
-                {
-                    OpenBunker( openBunkers[i] );
-                }
-            }
             for( int i = 0; i < closeBunkers.Length; i++ )
             {
                 if( closeBunkers[i] != null )
                 {
-                    CloseBunker( closeBunkers[i] );
+                    OpenBunker( closeBunkers[i] );
+                }
+            }
+            for( int i = 0; i < openBunkers.Length; i++ )
+            {
+                if(openBunkers[i] != null )
+                {
+                    CloseBunker(openBunkers[i] );
                 }
             }
         }
@@ -179,7 +178,7 @@ public class Lever : Interactable
     }
 
     private void CloseDoor (GameObject _doorToClose, Transform _doorCloseTransform) {
-        if (doorCloseTransform1 != null) {
+        if (_doorCloseTransform != null) {
             _doorToClose.transform.position = _doorCloseTransform.position;
             _doorToClose.transform.rotation = _doorCloseTransform.rotation;
         }

@@ -14,6 +14,9 @@ public class DoorManager : MonoBehaviour
     public RuntimeAnimatorController openController;
     public RuntimeAnimatorController closeController;
 
+    [Header("Lights")]
+    public GameObject[] lights;
+
     int counter = 0;
     public bool isDoorOpen = false;
 
@@ -27,14 +30,6 @@ public class DoorManager : MonoBehaviour
         counter = 0;
     }
 
-    void Update( )
-    {
-        if( Input.GetKeyDown( KeyCode.Space ) )
-        {
-            UnLock( );
-        }
-    }
-
     public void UnLock( )
     {
         if( !isDoorOpen )
@@ -42,6 +37,7 @@ public class DoorManager : MonoBehaviour
             animators[counter].runtimeAnimatorController = openController;
 
             counter++;
+
             isDoorOpen = counter < animators.Length ? false : true;
         }
         if( isDoorOpen )

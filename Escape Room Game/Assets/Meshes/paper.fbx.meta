@@ -1,21 +1,22 @@
 fileFormatVersion: 2
-guid: aa35a1b18486a4e419e8e3d8fac2c0f6
-timeCreated: 1524964166
+guid: 07e25d3eff891fc45a102d13149ea33a
+timeCreated: 1527568688
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: lambert3
     2300000: //RootNode
     3300000: //RootNode
-    4300000: fuse:fuse:pPlane1
+    4300000: fuse:fuse:pPlane2
+    9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
+      name: lambert3
     second: {fileID: 2100000, guid: be347e0fa7f32824785f55749cec5b57, type: 2}
   materials:
     importMaterials: 1
@@ -90,7 +91,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

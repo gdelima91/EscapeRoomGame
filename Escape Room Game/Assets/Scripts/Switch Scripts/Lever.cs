@@ -21,6 +21,7 @@ public class Lever : Interactable
     [Header("Vault Door")]
     public DoorManager doorManager;
 
+    private bool hasBeenActivated = false;
     private bool hasActivatedDoorManager = false;
     private AudioSource audioSource;
     private bool isReceivingPower = false;
@@ -95,18 +96,14 @@ public class Lever : Interactable
     {
         if( isTurnedOn )
         {
-            for( int i = 0; i < openBunkers.Length; i++ )
-            {
-                if( openBunkers[i] != null )
-                {
-                    OpenBunker( openBunkers[i] );
+            for (int i = 0; i < openBunkers.Length; i++) {
+                if (openBunkers[i] != null) {
+                    OpenBunker(openBunkers[i]);
                 }
             }
-            for( int i = 0; i < closeBunkers.Length; i++ )
-            {
-                if( closeBunkers[i] != null )
-                {
-                    CloseBunker( closeBunkers[i] );
+            for (int i = 0; i < closeBunkers.Length; i++) {
+                if (closeBunkers[i] != null) {
+                    CloseBunker(closeBunkers[i]);
                 }
             }
         }

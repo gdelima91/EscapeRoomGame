@@ -22,6 +22,11 @@ public class DoorManager : MonoBehaviour
 
     void Start( )
     {
+        foreach (GameObject light in lights) {
+            if (light != null) {
+                light.SetActive(false);
+            }
+        }
         doorAnimator.runtimeAnimatorController = closeDoorController;
         for( int i = 0; i < animators.Length; i++ )
         {
@@ -43,6 +48,9 @@ public class DoorManager : MonoBehaviour
         if( isDoorOpen )
         {
             doorAnimator.runtimeAnimatorController = openDoorController;
+        }
+        if (lights[counter - 1] != null) {
+            lights[counter - 1].SetActive(true);
         }
     }
 }

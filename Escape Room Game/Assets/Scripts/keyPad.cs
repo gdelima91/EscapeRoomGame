@@ -148,10 +148,15 @@ public class keyPad : MonoBehaviour {
 
             if (keyPadScreen) // keypad and it's input ! problem with input|| it has to be input = input +"" to remember the previous input, but this has a problem with keypads it makes 4 copies of the input
             {
-
+                GUI.color = new Color(128, 128, 128);
                 GUI.Box(new Rect(0, 0, 320, 400), "");
+                if ((codeSize == 4) && (!input.Equals(curPassword)))
+                {
+                    GUI.color = new Color(255, 0, 0);
+                }
                 GUI.Box(new Rect(5, 5, 310, 25), input);
-                
+                GUI.color = new Color(128, 128, 128);
+
                 if (GUI.Button(new Rect(5, 35, 100, 100), "7"))
                 {
                     if (codeSize < maxCodeSize)
@@ -242,6 +247,8 @@ public class keyPad : MonoBehaviour {
                         --codeSize;
                     }
                 }
+
+                
             }
         }
     } 

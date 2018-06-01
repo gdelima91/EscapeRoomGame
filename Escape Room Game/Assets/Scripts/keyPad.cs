@@ -13,10 +13,13 @@ public class keyPad : MonoBehaviour {
     public bool keyPadScreen;
     public Transform doorHinge;
 
+    private Color guiNumberColor;
+
    // private Electricity electricity;
 
     private void Start() {
-    //    electricity = GetComponent<Electricity>();
+        //    electricity = GetComponent<Electricity>();
+        guiNumberColor = new Color(128, 128, 128);
     }
 
     void OnTriggerEnter(Collider other) //trigger box should add in manual key from key's
@@ -120,14 +123,21 @@ public class keyPad : MonoBehaviour {
                     {
                         input = input.Substring(0, codeSize - 1);
                         --codeSize;
+                        guiNumberColor = new Color(128, 128, 128);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.KeypadEnter))
+                {
+                    if (input != curPassword)
+                    {
+                        guiNumberColor = new Color(255, 0, 0);
+                    }
+                    else
+                    {
+                        openDoor = true;
                     }
                 }
             }
-        }
-
-        if (input == curPassword)
-        {
-            openDoor = true;
         }
 
         //door hinge rotation
@@ -150,11 +160,10 @@ public class keyPad : MonoBehaviour {
             {
                 GUI.color = new Color(128, 128, 128);
                 GUI.Box(new Rect(0, 0, 320, 400), "");
-                if ((codeSize == 4) && (!input.Equals(curPassword)))
-                {
-                    GUI.color = new Color(255, 0, 0);
-                }
+
+                GUI.color = guiNumberColor;
                 GUI.Box(new Rect(5, 5, 310, 25), input);
+
                 GUI.color = new Color(128, 128, 128);
 
                 if (GUI.Button(new Rect(5, 35, 100, 100), "7"))
@@ -237,14 +246,27 @@ public class keyPad : MonoBehaviour {
                         ++codeSize;
                     }
                 }
-                    
-            
-                if (GUI.Button(new Rect(215, 350, 100, 100), "BackSpace"))
+
+                if (GUI.Button(new Rect(215, 350, 100, 100), "Enter"))
+                {
+                    if (input != curPassword)
+                    {
+                        guiNumberColor = new Color(255, 0, 0);
+                    }
+                    else
+                    {
+                        openDoor = true;
+                    }
+                }
+
+                if (GUI.Button(new Rect(5, 350, 100, 100), "BackSpace"))
                 {
                     if (codeSize > 0)
                     {
                         input = input.Substring(0, codeSize - 1);
                         --codeSize;
+                        guiNumberColor = new Color(128, 128, 128);
+
                     }
                 }
 

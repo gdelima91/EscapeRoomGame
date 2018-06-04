@@ -24,11 +24,11 @@ public class RaycastManager_GasSystem : MonoBehaviour
                 raycasted_obj = hit.collider.gameObject;
                 CrosshairActive();
 
-                if (Input.GetKeyDown("e"))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     AudioManager.instance.Play("Pickup");
                     GasMaskController.instance.hasGasMask = true;
-                    GasMaskController.instance.UpdateMaskUI("MaskWhite");
+                    // GasMaskController.instance.UpdateMaskUI("MaskWhite");
                     raycasted_obj.SetActive(false);
                 }
             }
@@ -38,11 +38,11 @@ public class RaycastManager_GasSystem : MonoBehaviour
                 raycasted_obj = hit.collider.gameObject;
                 CrosshairActive();
 
-                if (Input.GetKeyDown("e"))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     AudioManager.instance.Play("Pickup");
-                    GasMaskController.instance.maskFilters++;
-                    GasMaskController.instance.UpdateFilterUI("FilterNumber");
+                    // GasMaskController.instance.maskFilters++;
+                    // GasMaskController.instance.UpdateFilterUI("FilterNumber");
                     raycasted_obj.SetActive(false);
                 }
             }

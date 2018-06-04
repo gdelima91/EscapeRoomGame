@@ -26,7 +26,7 @@ public class GasMaskController : MonoBehaviour
     private bool canUse = false;
     [HideInInspector] public bool puttingOn = false, puttingOff = false;
     [HideInInspector] private GASMASKSTATES currentState;
-    #endregion
+    #endregion 
 
     #region Movement Speeds
     [Header("Movement Speeds")]
@@ -37,24 +37,24 @@ public class GasMaskController : MonoBehaviour
     #endregion
 
     #region Filter Variables   
-    [Header("Filter Options")]    
-    [SerializeField] private float maxFilterTimer = 100f; //Keep this at 100.
-    [SerializeField] private float filterFallRate = 2f; //Increase this to make the filter deplete faster
-    [SerializeField] private int warningPercentage; //The percentage the system will give a warning
-    [SerializeField] private float defaultVignette = 0.28f; //Default value of the vignette image effect
+    //[Header("Filter Options")]    
+   //[SerializeField] private float maxFilterTimer = 100f; //Keep this at 100.
+    //[SerializeField] private float filterFallRate = 2f; //Increase this to make the filter deplete faster
+    //[SerializeField] private int warningPercentage; //The percentage the system will give a warning
+    //[SerializeField] private float defaultVignette = 0.28f; //Default value of the vignette image effect
 
-    [HideInInspector] private float filterTimer = 100f; //Set the same as your max value, do not change!
-    private bool hasFilter = true; //Whether you have a filter or not
-    private bool filterChanged = false; //Has the filter changed
-    public int maskFilters = 0; //How many filters does your player currently have? Increase this value at the start to give them more!
+    //[HideInInspector] private float filterTimer = 100f; //Set the same as your max value, do not change!
+    //private bool hasFilter = true; //Whether you have a filter or not
+    //private bool filterChanged = false; //Has the filter changed
+    //public int maskFilters = 0; //How many filters does your player currently have? Increase this value at the start to give them more!
     #endregion
 
     #region References for Inspector
     [Header("References")]
-    [SerializeField] private Image maskUI;
-    [SerializeField] private Image filterMainUI;
-    [SerializeField] private Text filterUI;
-    [SerializeField] private Text FilterLevelUI;
+    //[SerializeField] private Image maskUI;
+    //[SerializeField] private Image filterMainUI;
+    //[SerializeField] private Text filterUI;
+    //[SerializeField] private Text FilterLevelUI;
 
     private GameObject mainCamera;
     private GameObject player;
@@ -87,9 +87,9 @@ public class GasMaskController : MonoBehaviour
     void Start()
     {
         #region Filling Variables / Filter/Mask Timer start values
-        filterTimer = maxFilterTimer;
-        equipMaskTimer = maxEquipMaskTimer;
-        maskBeforeTimer = maxEquipMaskTimer - 0.01f;
+       // filterTimer = maxFilterTimer;
+       // equipMaskTimer = maxEquipMaskTimer;
+       // maskBeforeTimer = maxEquipMaskTimer - 0.01f;
         mainCamera = GameObject.FindWithTag("MainCamera");
         player = GameObject.FindWithTag("Player");
         vignetteEffect = mainCamera.GetComponent<VignetteAndChromaticAberration>();
@@ -101,7 +101,7 @@ public class GasMaskController : MonoBehaviour
     void Update()
     {
         #region Equipped Gas Mask
-        if (Input.GetKey("g") && hasFilter && hasGasMask && !gasMaskOn && !puttingOn)
+        if (Input.GetKeyDown(KeyCode.G) && hasGasMask && !gasMaskOn && !puttingOn)
         {
             equipMaskTimer -= Time.deltaTime;
             if (equipMaskTimer <= 0)
@@ -117,7 +117,7 @@ public class GasMaskController : MonoBehaviour
             }
         }
 
-        else if (Input.GetKey("g") && hasFilter && hasGasMask && gasMaskOn && !puttingOn)
+        else if (Input.GetKeyDown(KeyCode.G) && hasGasMask && gasMaskOn && !puttingOn)
         {
             equipMaskTimer -= Time.deltaTime;
             if (equipMaskTimer <= 0)
@@ -141,7 +141,7 @@ public class GasMaskController : MonoBehaviour
         }
         #endregion
 
-        #region Filter Control
+        /*#region Filter Control
         if (hasGasMask && gasMaskOn)
         {
             filterTimer -= Time.deltaTime * filterFallRate;
@@ -181,7 +181,7 @@ public class GasMaskController : MonoBehaviour
                 ReplaceFilter();
             }
         }
-        #endregion
+        #endregion */
 
         #region Taking Damage / Breathing Section
 
@@ -264,7 +264,7 @@ public class GasMaskController : MonoBehaviour
         #endregion
     }
 
-    void ReplaceFilter()
+   /* void ReplaceFilter()
     {
         #region Replace Filter Code
         AudioManager.instance.Play("ReplaceFilter");
@@ -277,7 +277,7 @@ public class GasMaskController : MonoBehaviour
         UpdateFilterUI("FilterValue");
         filterChanged = false;
         #endregion
-    }
+    }*/
 
     public void DamageGas()
     {
@@ -300,7 +300,7 @@ public class GasMaskController : MonoBehaviour
         #endregion
     }
 
-    public void UpdateFilterUI(string filterType)
+   /* public void UpdateFilterUI(string filterType)
     {
         #region Update Filter UI Section
         if (filterType == "FilterNumber")
@@ -323,9 +323,9 @@ public class GasMaskController : MonoBehaviour
             FilterLevelUI.text = filterTimer.ToString("0");
         }
         #endregion
-    }
+    }*/
 
-    public void UpdateMaskUI(string maskType)
+   /* public void UpdateMaskUI(string maskType)
     {
         #region Update Mask UI Section        
         if (maskType == "MaskWhite")
@@ -337,7 +337,7 @@ public class GasMaskController : MonoBehaviour
             maskUI.color = Color.green;
         }
         #endregion
-    }
+    }*/
 
     IEnumerator Wait()
     {
@@ -356,7 +356,7 @@ public class GasMaskController : MonoBehaviour
         gasMaskOn = true;
         AudioManager.instance.Play("BreathIn");
         yield return new WaitForSeconds(1.5f);
-        UpdateMaskUI("MaskGreen");
+       // UpdateMaskUI("MaskGreen");
         AudioManager.instance.Play("GasMask_Breathing");
         screenOverlayEffect.enabled = true;
         vignetteEffect.enabled = true;
@@ -368,7 +368,7 @@ public class GasMaskController : MonoBehaviour
     {
         #region Putting Mask On Section
         gasMaskOn = false;
-        UpdateMaskUI("MaskWhite");
+       // UpdateMaskUI("MaskWhite");
         AudioManager.instance.StopPlaying("GasMask_Breathing");
         AudioManager.instance.StopPlaying("DeepBreath");
         screenOverlayEffect.enabled = false;

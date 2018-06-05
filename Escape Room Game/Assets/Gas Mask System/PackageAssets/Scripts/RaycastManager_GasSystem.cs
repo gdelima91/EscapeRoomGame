@@ -22,9 +22,9 @@ public class RaycastManager_GasSystem : MonoBehaviour
             if(hit.collider.CompareTag("GasMask"))
             {
                 raycasted_obj = hit.collider.gameObject;
-                CrosshairActive();
+               // CrosshairActive();
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("Click"))
                 {
                     AudioManager.instance.Play("Pickup");
                     GasMaskController.instance.hasGasMask = true;
@@ -38,7 +38,7 @@ public class RaycastManager_GasSystem : MonoBehaviour
                 raycasted_obj = hit.collider.gameObject;
                 CrosshairActive();
 
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetButtonDown("Click"))
                 {
                     AudioManager.instance.Play("Pickup");
                     // GasMaskController.instance.maskFilters++;

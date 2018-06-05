@@ -101,7 +101,7 @@ public class GasMaskController : MonoBehaviour
     void Update()
     {
         #region Equipped Gas Mask
-        if (Input.GetKeyDown(KeyCode.G) && hasGasMask && !gasMaskOn && !puttingOn)
+        if (Input.GetButtonDown("GasMask") && hasGasMask && !gasMaskOn && !puttingOn)
         {
             equipMaskTimer -= Time.deltaTime;
             if (equipMaskTimer <= 0)
@@ -117,7 +117,7 @@ public class GasMaskController : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.G) && hasGasMask && gasMaskOn && !puttingOn)
+        else if (Input.GetButtonDown("GasMask") && hasGasMask && gasMaskOn && !puttingOn)
         {
             equipMaskTimer -= Time.deltaTime;
             if (equipMaskTimer <= 0)

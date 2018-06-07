@@ -26,6 +26,7 @@ public class GasMaskController : MonoBehaviour
     private bool canUse = false;
     [HideInInspector] public bool puttingOn = false, puttingOff = false;
     [HideInInspector] private GASMASKSTATES currentState;
+    public float gasDamage = 4.0f;
     #endregion 
 
     #region Movement Speeds
@@ -215,10 +216,8 @@ public class GasMaskController : MonoBehaviour
                     playOnce = true;
                 }
 
-                HealthController.instance.playerHealth -= HealthController.instance.healthFall * Time.deltaTime;
-                HealthController.instance.UpdateHealth();
+                PlayerHealth.instance.TakeDamage(gasDamage * Time.deltaTime);
 
-                if(HealthController.instance.playerHealth <= 0) HealthController.instance.Death();
                 break;
             case GASMASKSTATES.GasMaskOn:
                 AudioManager.instance.StopPlaying("ChokingGas");
@@ -231,10 +230,10 @@ public class GasMaskController : MonoBehaviour
         //if (!canBreath && (puttingOn || puttingOff) && playOnce)
         //{
         //    Debug.Log("Stop all sounds");
-        //    HealthController.instance.playerHealth = HealthController.instance.maxHealth;
+        //    PlayerHealth.instance.playerHealth = PlayerHealth.instance.maxHealth;
         //    AudioManager.instance.StopPlaying("ChokingGas");
         //    AudioManager.instance.StopPlaying("DeepBreath");
-        //    HealthController.instance.UpdateHealth();
+        //    PlayerHealth.instance.UpdateHealth();
         //}
 
         //else if (!canBreath && !playOnce && (!gasMaskOn || puttingOff))
@@ -249,17 +248,17 @@ public class GasMaskController : MonoBehaviour
         //    if (canBreath)
         //    {
         //        Debug.Log("Deep breath");
-        //        HealthController.instance.playerHealth = HealthController.instance.maxHealth;
+        //        PlayerHealth.instance.playerHealth = PlayerHealth.instance.maxHealth;
         //        AudioManager.instance.StopPlaying("ChokingGas");
         //        AudioManager.instance.Play("DeepBreath");
-        //        HealthController.instance.UpdateHealth();
+        //        PlayerHealth.instance.UpdateHealth();
         //        playOnce = false;
         //    }
         //}
 
-        //if (!canBreath && HealthController.instance.playerHealth <= 0)
+        //if (!canBreath && PlayerHealth.instance.playerHealth <= 0)
         //{
-        //    HealthController.instance.Death();
+        //    PlayerHealth.instance.Death();
         //}
         #endregion
     }
@@ -283,7 +282,6 @@ public class GasMaskController : MonoBehaviour
     {
         #region Damaging Gas Section
         canBreath = false;
-        HealthController.instance.UpdateHealth();
         player.GetComponent<FirstPersonController>().m_WalkSpeed = walkGas;
         player.GetComponent<FirstPersonController>().m_RunSpeed = runGas;
         blurEffect.enabled = true;

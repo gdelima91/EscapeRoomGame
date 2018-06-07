@@ -21,11 +21,13 @@ public class RaycastManager_GasSystem : MonoBehaviour
         {
             if(hit.collider.CompareTag("GasMask"))
             {
+                Debug.Log("GasMask Hit");
                 raycasted_obj = hit.collider.gameObject;
                // CrosshairActive();
 
                 if (Input.GetButtonDown("Click"))
                 {
+                    Debug.Log("Click");
                     AudioManager.instance.Play("Pickup");
                     GasMaskController.instance.hasGasMask = true;
                     // GasMaskController.instance.UpdateMaskUI("MaskWhite");
@@ -33,7 +35,7 @@ public class RaycastManager_GasSystem : MonoBehaviour
                 }
             }
 
-            else if (hit.collider.CompareTag("GasMaskFilter"))
+            /*else if (hit.collider.CompareTag("GasMaskFilter"))
             {
                 raycasted_obj = hit.collider.gameObject;
                 CrosshairActive();
@@ -45,16 +47,16 @@ public class RaycastManager_GasSystem : MonoBehaviour
                     // GasMaskController.instance.UpdateFilterUI("FilterNumber");
                     raycasted_obj.SetActive(false);
                 }
-            }
+            }*/
         }
-
+        /*
         else
         {
             CrosshairNormal();
-        }
+        }*/
     }
 
-    void CrosshairActive()
+   /* void CrosshairActive()
     {
         uiCrosshair.color = Color.red;
     }
@@ -62,5 +64,5 @@ public class RaycastManager_GasSystem : MonoBehaviour
     void CrosshairNormal()
     {
         uiCrosshair.color = Color.white;
-    }
+    }*/
 }

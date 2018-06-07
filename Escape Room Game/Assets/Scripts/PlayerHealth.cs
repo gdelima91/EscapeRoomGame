@@ -6,12 +6,27 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour {
 
     public CheckPoint checkPoint;
-    public int maxHP;
+    public float maxHP;
 
-    private int currentHP;
+    public float currentHP;
 
-	// Use this for initialization
-	void Start () {
+    public static PlayerHealth instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
         currentHP = maxHP;
 	}
 
@@ -23,12 +38,15 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-    public void TakeDamage (int damage) {
+    public void TakeDamage (float damage) {
         currentHP = currentHP - damage;
 
         if (currentHP <= 0) {
             transform.position = checkPoint.ResetPlayer( );
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            currentHP = maxHP;
         }
+
     }
 }

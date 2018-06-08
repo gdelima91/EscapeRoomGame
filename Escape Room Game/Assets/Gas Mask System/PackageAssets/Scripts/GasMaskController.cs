@@ -101,45 +101,60 @@ public class GasMaskController : MonoBehaviour
 
     void Update()
     {
-        #region Equipped Gas Mask
-        if (Input.GetButtonDown("GasMask") && hasGasMask && !gasMaskOn && !puttingOn)
+        #region Equipped Gas 
+        if (Input.GetButtonDown("GasMask"))
         {
-            equipMaskTimer -= Time.deltaTime;
-            if (equipMaskTimer <= 0)
+            //gasdamage = false
+            
+            hasGasMask = true;
+            Debug.Log("Pressed Gas, " + (hasGasMask ? "has mask, " : "no mask, ") + (gasMaskOn ? "mask on, " : "mask off, " + (puttingOn ? "putting on" : "not putting on")));
+            if (hasGasMask && !gasMaskOn && !puttingOn)
             {
-                canUse = true;
+                Debug.Log("Put On");
+                gasMaskOn = true;
+                screenOverlayEffect.enabled = true;
+                /*equipMaskTimer -= Time.deltaTime;
+                if (equipMaskTimer <= 0)
+                {
+                    canUse = true;
+                }
+
+                if (canUse)
+                {
+                    equipMaskTimer = 1f;
+                    StartCoroutine(MaskOn());
+                    StartCoroutine(Wait());
+                }*/
             }
 
-            if (canUse)
+            else if(hasGasMask && gasMaskOn && !puttingOn)
             {
-                equipMaskTimer = 1f;
-                StartCoroutine(MaskOn());
-                StartCoroutine(Wait());
+                Debug.Log("Take Off");
+                gasMaskOn = false;
+                screenOverlayEffect.enabled = false;
+                /*equipMaskTimer -= Time.deltaTime;
+                if (equipMaskTimer <= 0)
+                {
+                    canUse = false;
+                }
+
+                if (!canUse)
+                {
+                    equipMaskTimer = maxEquipMaskTimer;
+                    MaskOff();
+                    StartCoroutine(Wait());
+                }*/
+            }
+            else
+            {
+                if (equipMaskTimer <= maskBeforeTimer)
+                {
+                    equipMaskTimer = maxEquipMaskTimer;
+                }
             }
         }
 
-        else if (Input.GetButtonDown("GasMask") && hasGasMask && gasMaskOn && !puttingOn)
-        {
-            equipMaskTimer -= Time.deltaTime;
-            if (equipMaskTimer <= 0)
-            {
-                canUse = false;
-            }
-
-            if (!canUse)
-            {
-                equipMaskTimer = maxEquipMaskTimer;
-                MaskOff();
-                StartCoroutine(Wait());
-            }
-        }
-        else
-        {
-            if (equipMaskTimer <= maskBeforeTimer)
-            {
-                equipMaskTimer = maxEquipMaskTimer;
-            }
-        }
+        
         #endregion
 
         /*#region Filter Control

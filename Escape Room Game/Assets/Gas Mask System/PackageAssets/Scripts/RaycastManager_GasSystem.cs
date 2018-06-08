@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class RaycastManager_GasSystem : MonoBehaviour
+public class RaycastManager_GasSystem : Interactable
 {
     private GameObject raycasted_obj;
 

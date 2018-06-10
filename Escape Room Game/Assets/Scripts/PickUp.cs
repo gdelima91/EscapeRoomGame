@@ -45,8 +45,10 @@ public class PickUp : Interactable{
             //rb.isKinematic = true;
         }
 
+        Physics.IgnoreCollision(GameObject.Find("FPSController").GetComponent<CharacterController>().GetComponent<Collider>(), _collider, true);
+
         if (_collider != null) {
-            _collider.isTrigger = true;
+            //_collider.isTrigger = true;
         }
 
         gameObject.layer = 2;
@@ -60,6 +62,8 @@ public class PickUp : Interactable{
             rb.constraints = RigidbodyConstraints.None;
             //rb.isKinematic = false;
         }
+
+        Physics.IgnoreCollision(GameObject.Find("FPSController").GetComponent<CharacterController>().GetComponent<Collider>(), _collider, false);
 
         if (_collider != null) {
             _collider.isTrigger = false;

@@ -18,6 +18,9 @@ public class FPSRay : MonoBehaviour {
     private float newDistance;
     private RaycastHit hit;
     private Vector3 defaultHoldPos;
+
+    private Collider[] colliders;
+    private float cameraDistance;
     
 
     //[HideInInspector]
@@ -25,6 +28,7 @@ public class FPSRay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //colliders = new Collider[];
         //Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         mCamera = Camera.main;
@@ -42,7 +46,14 @@ public class FPSRay : MonoBehaviour {
         
         InteractControls();
         DynamicHoldPos();
-        //print(highlightedGO);
+        print(hit.collider.bounds.extents.magnitude);
+        //if (highlightedGO != null) {
+        //    colliders = Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents);
+        //    foreach (Collider collider in colliders) {
+        //        print(collider.gameObject);
+        //    }
+        //}
+        
     }
 
     void ShootRay () {
@@ -86,9 +97,11 @@ public class FPSRay : MonoBehaviour {
     void DynamicHoldPos () {
         if (isPickepObj) {
             if (hit.distance <= maxRayDistance &&
-            hit.collider != null) {
+            hit.collider != null) { 
+            //&& Physics.OverlapBox(hit.collider.gameObject.transform.position, hit.collider.gameObject.GetComponent<Collider>().bounds.extents, hit.collider.transform.rotation).Length <= 0) {
+                cameraDistance = hit.distance - (hit.collider.bounds.extents.magnitude / 5);
 
-                Vector3 destination = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1.5f, 0, maxRayDistance))));
+                Vector3 destination = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1, 0, cameraDistance))));
 
                 holdPos.transform.position = Vector3.Lerp(holdPos.transform.position, destination, Time.deltaTime * 5);
                 //print(Mathf.Clamp(hit.distance, minHoldDistance, maxRayDistance));
@@ -107,7 +120,8 @@ public class FPSRay : MonoBehaviour {
             
             if (isPickepObj) {
                 if (highlightedGO != null) {
-                    if (highlightedGO.GetComponent<PickUp>() != null) {
+                    if (highlightedGO.GetComponent<PickUp>() != null && Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents / 2, highlightedGO.transform.rotation).Length <= 1) {// && highlightedGO.GetComponent<Collider>().bounds.Inte) {
+
                         isPickepObj = false;
                         highlightedGO.GetComponent<PickUp>().DropObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(null);

@@ -102,7 +102,7 @@ public class GasMaskController : MonoBehaviour
     void Update()
     {
         #region Equipped Gas 
-        if (Input.GetButtonDown("GasMask"))
+        if (Input.GetButtonDown("GasMask") && hasGasMask)
         {
             //gasdamage = false
             

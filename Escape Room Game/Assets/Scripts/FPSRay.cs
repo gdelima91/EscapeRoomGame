@@ -8,6 +8,8 @@ public class FPSRay : MonoBehaviour {
     public float maxRayDistance;
     public float minHoldDistance;
 
+    public GameObject testGO;
+
     private Camera mCamera;
     private GameObject highlightedGO;
     private GameObject heldGO;
@@ -40,6 +42,7 @@ public class FPSRay : MonoBehaviour {
         
         InteractControls();
         DynamicHoldPos();
+        //print(highlightedGO);
     }
 
     void ShootRay () {
@@ -48,6 +51,8 @@ public class FPSRay : MonoBehaviour {
 
         // Shoot ray
         if (Physics.Raycast(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward), out hit, maxRayDistance)) {
+
+            print(hit.collider.gameObject);
 
             // Check if the object we're hitting is "Interactable"
             if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
@@ -83,7 +88,9 @@ public class FPSRay : MonoBehaviour {
             if (hit.distance <= maxRayDistance &&
             hit.collider != null) {
 
-                holdPos.transform.position = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1.5f, 0, maxRayDistance))));
+                Vector3 destination = mCamera.transform.position + (mCamera.transform.forward.normalized * ((Mathf.Clamp(hit.distance - 1.5f, 0, maxRayDistance))));
+
+                holdPos.transform.position = Vector3.Lerp(holdPos.transform.position, destination, Time.deltaTime * 5);
                 //print(Mathf.Clamp(hit.distance, minHoldDistance, maxRayDistance));
 
             }
@@ -95,6 +102,7 @@ public class FPSRay : MonoBehaviour {
     }
 
     void InteractControls () {
+
         if (Input.GetButtonDown("Click")) {
             
             if (isPickepObj) {
@@ -114,12 +122,21 @@ public class FPSRay : MonoBehaviour {
                         isPickepObj = true;
                         highlightedGO.GetComponent<PickUp>().PickUpObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(holdPos);
-                        highlightedGO.transform.parent = null;
+                        //DontDestroyOnLoad(highlightedGO);
+                        //highlightedGO.transform.parent = null;
                     }
                     else if( highlightedGO.GetComponent<Lever>() != null )
                     {
                         Lever lever = highlightedGO.GetComponent<Lever>();
                         lever.InteractWithLever( );
+                    }
+                    else if (highlightedGO.GetComponent<LockerScript>() != null) {
+                        LockerScript lockerScript = highlightedGO.GetComponent<LockerScript>();
+                        lockerScript.ChangeState(!lockerScript.currentStatus);
+                    } else if (highlightedGO.GetComponent<GasMaskPickUp>() != null) {
+                        AudioManager.instance.Play("Pickup");
+                        GasMaskController.instance.hasGasMask = true;
+                        Destroy(highlightedGO);
                     }
                 }
             }

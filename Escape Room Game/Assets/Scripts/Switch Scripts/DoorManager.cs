@@ -14,19 +14,23 @@ public class DoorManager : MonoBehaviour
     public RuntimeAnimatorController openController;
     public RuntimeAnimatorController closeController;
 
+    [Header("Light Meshes")]
+    public GameObject[] lightMeshes;
+    public Material openMaterial;
+    public Material closedMaterial;
+
     [Header("Lights")]
     public GameObject[] lights;
+
+    [Header("Light Colors")]
+    public Color openColor;
+    public Color closedColor;
 
     int counter = 0;
     public bool isDoorOpen = false;
 
     void Start( )
     {
-        foreach (GameObject light in lights) {
-            if (light != null) {
-                light.SetActive(false);
-            }
-        }
         doorAnimator.runtimeAnimatorController = closeDoorController;
         for( int i = 0; i < animators.Length; i++ )
         {
@@ -50,7 +54,10 @@ public class DoorManager : MonoBehaviour
             doorAnimator.runtimeAnimatorController = openDoorController;
         }
         if (lights[counter - 1] != null) {
-            lights[counter - 1].SetActive(true);
+            lights[counter - 1].GetComponent<Light>().color = openColor;
+        }
+        if (lightMeshes[counter - 1] != null) {
+            lightMeshes[counter - 1].GetComponent<MeshRenderer>().material = openMaterial;
         }
     }
 }

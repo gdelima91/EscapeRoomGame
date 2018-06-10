@@ -3,16 +3,18 @@ using System.Collections;
 
 public class GasDamage : MonoBehaviour
 {
+    public bool isActive = true;
+
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !GasMaskController.instance.gasMaskOn)
-        {
-            GasMaskController.instance.DamageGas();
-        }
+        if (isActive) {
+            if (other.CompareTag("Player") && !GasMaskController.instance.gasMaskOn) {
+                GasMaskController.instance.DamageGas();
+            }
 
-        else if (other.CompareTag("Player") && GasMaskController.instance.gasMaskOn)
-        {
-            GasMaskController.instance.CanBreath();
+            else if (other.CompareTag("Player") && GasMaskController.instance.gasMaskOn) {
+                GasMaskController.instance.CanBreath();
+            }
         }
     }
 

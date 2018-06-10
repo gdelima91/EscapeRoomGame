@@ -38,7 +38,12 @@ public class FuseTrigger : MonoBehaviour {
             if (other.GetComponent<PickUp>() != null) {
                 other.GetComponent<PickUp>().SetIsPickedUp(false);
                 other.GetComponent<PickUp>().DeactivateHighlight();
-                playerGO.SetHighlightedGO(null);
+                if (playerGO.GetComponent<FPSRay>().GetHighlightedGO() != null) {
+                    if (playerGO.GetComponent<FPSRay>().GetHighlightedGO().GetComponent<FuseItem>() != null) {
+                        playerGO.SetHighlightedGO(null);
+                        playerGO.isPickepObj = false;
+                    }
+                }
                 Destroy(other.GetComponent<Interactable>());
             }
 
@@ -48,9 +53,9 @@ public class FuseTrigger : MonoBehaviour {
             }
             other.transform.position = fuseSlots[other.GetComponent<FuseItem>().fuseSlot].position;
             other.transform.rotation = fuseSlots[other.GetComponent<FuseItem>().fuseSlot].rotation;
-            if (playerGO != null) {
-                playerGO.isPickepObj = false;
-            }
+            //if (playerGO != null && playerGO.GetComponent<FPSRay>().GetHighlightedGO().GetComponent<FuseItem>() != null) {
+                
+            //}
 
             fuseCount++;
             

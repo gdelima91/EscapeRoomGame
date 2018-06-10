@@ -76,8 +76,16 @@ public class PickUp : Interactable{
             }
             
             if (shouldRotate) {
-                transform.rotation = Camera.main.transform.rotation;
-                rb.MoveRotation(Camera.main.transform.rotation);
+                Vector3 destination = Camera.main.transform.eulerAngles;
+                Vector3 currentRot = transform.rotation.eulerAngles;
+                //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, destination, Time.deltaTime);
+                //transform.ro
+
+                transform.rotation = Quaternion.Lerp(transform.rotation, Camera.main.transform.rotation, Time.deltaTime * 5);
+
+                //transform.eulerAngles = Camera.main.transform.rotation.eulerAngles;
+
+                //rb.MoveRotation(Camera.main.transform.rotation);
             }
         }
     }

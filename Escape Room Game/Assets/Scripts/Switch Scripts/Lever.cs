@@ -40,6 +40,8 @@ public class Lever : Interactable
         {
             isTurnedOn = true;
         }
+
+        SetParticles();
     }
 
     public void InteractWithLever( )
@@ -70,6 +72,8 @@ public class Lever : Interactable
                 DoorMove();
             }
         }
+
+        SetParticles();
     }
 
     IEnumerator PlaySparks () {
@@ -164,6 +168,12 @@ public class Lever : Interactable
     void CloseBunker( Bunker b )
     {
         b.CloseBunker( );
+    }
+
+    void SetParticles () {
+        if (GetComponent<GasRoomController>() != null) {
+            GetComponent<GasRoomController>().ChangeParticleStatus(!isTurnedOn);
+        }
     }
 
     private void OpenDoor (GameObject _doorToOpen, Transform _openDoorTransform) {

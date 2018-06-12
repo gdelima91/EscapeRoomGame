@@ -48,7 +48,7 @@ public class PickUp : Interactable{
         Physics.IgnoreCollision(GameObject.Find("FPSController").GetComponent<CharacterController>().GetComponent<Collider>(), _collider, true);
 
         if (_collider != null) {
-            //_collider.isTrigger = true;
+            _collider.isTrigger = true;
         }
 
         gameObject.layer = 2;

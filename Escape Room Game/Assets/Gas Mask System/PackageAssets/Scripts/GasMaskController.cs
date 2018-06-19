@@ -113,6 +113,7 @@ public class GasMaskController : MonoBehaviour
                 Debug.Log("Put On");
                 gasMaskOn = true;
                 screenOverlayEffect.enabled = true;
+                vignetteEffect.enabled = true;
                 /*equipMaskTimer -= Time.deltaTime;
                 if (equipMaskTimer <= 0)
                 {
@@ -132,6 +133,7 @@ public class GasMaskController : MonoBehaviour
                 Debug.Log("Take Off");
                 gasMaskOn = false;
                 screenOverlayEffect.enabled = false;
+                vignetteEffect.enabled = false;
                 /*equipMaskTimer -= Time.deltaTime;
                 if (equipMaskTimer <= 0)
                 {

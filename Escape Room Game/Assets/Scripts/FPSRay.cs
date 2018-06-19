@@ -10,6 +10,11 @@ public class FPSRay : MonoBehaviour {
 
     public GameObject testGO;
 
+    [Header("Sound Effects")]
+    public AudioClip pickUpAudioClip;
+    public AudioClip dropAudioClip;
+
+
     private Camera mCamera;
     private GameObject highlightedGO;
     private GameObject heldGO;
@@ -117,7 +122,8 @@ public class FPSRay : MonoBehaviour {
     void InteractControls () {
 
         if (Input.GetButtonDown("Click")) {
-            
+
+            // Drop the held object
             if (isPickepObj) {
                 if (highlightedGO != null) {
                     if (highlightedGO.GetComponent<PickUp>() != null && Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents / 2, highlightedGO.transform.rotation).Length <= 1) {// && highlightedGO.GetComponent<Collider>().bounds.Inte) {
@@ -126,16 +132,24 @@ public class FPSRay : MonoBehaviour {
                         highlightedGO.GetComponent<PickUp>().DropObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(null);
 
+                        if (dropAudioClip!= null && GetComponent<AudioSource>()) {
+                            GetComponent<AudioSource>().PlayOneShot(dropAudioClip);
+                        }
+
                         //print("drop");
                     }
                 }
-
+            // Pick up the highlighted object
             } else {
                 if (highlightedGO != null) {
                     if (highlightedGO.GetComponent<PickUp>() != null) {
                         isPickepObj = true;
                         highlightedGO.GetComponent<PickUp>().PickUpObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(holdPos);
+
+                        if (pickUpAudioClip != null && GetComponent<AudioSource>() != null) {
+                            GetComponent<AudioSource>().PlayOneShot(pickUpAudioClip);
+                        }
                         //DontDestroyOnLoad(highlightedGO);
                         //highlightedGO.transform.parent = null;
                     }

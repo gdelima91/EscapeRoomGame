@@ -51,7 +51,7 @@ public class FPSRay : MonoBehaviour {
         
         InteractControls();
         DynamicHoldPos();
-        print(hit.collider.bounds.extents.magnitude);
+        print(hit.collider.gameObject);
         //if (highlightedGO != null) {
         //    colliders = Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents);
         //    foreach (Collider collider in colliders) {
@@ -68,7 +68,7 @@ public class FPSRay : MonoBehaviour {
         // Shoot ray
         if (Physics.Raycast(mCamera.transform.position, mCamera.transform.TransformDirection(Vector3.forward), out hit, maxRayDistance)) {
 
-            print(hit.collider.gameObject);
+            //print(hit.collider.gameObject);
 
             // Check if the object we're hitting is "Interactable"
             if (hit.collider.gameObject.GetComponent<Interactable>() != null) {
@@ -102,7 +102,8 @@ public class FPSRay : MonoBehaviour {
     void DynamicHoldPos () {
         if (isPickepObj) {
             if (hit.distance <= maxRayDistance &&
-            hit.collider != null) { 
+            hit.collider != null &&
+            hit.collider.gameObject != highlightedGO) { 
             //&& Physics.OverlapBox(hit.collider.gameObject.transform.position, hit.collider.gameObject.GetComponent<Collider>().bounds.extents, hit.collider.transform.rotation).Length <= 0) {
                 cameraDistance = hit.distance - (hit.collider.bounds.extents.magnitude / 5);
 
@@ -126,13 +127,13 @@ public class FPSRay : MonoBehaviour {
             // Drop the held object
             if (isPickepObj) {
                 if (highlightedGO != null) {
-                    if (highlightedGO.GetComponent<PickUp>() != null && Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents / 2, highlightedGO.transform.rotation).Length <= 1) {// && highlightedGO.GetComponent<Collider>().bounds.Inte) {
+                    if (highlightedGO.GetComponent<PickUp>() != null && Physics.OverlapBox(highlightedGO.gameObject.transform.position, highlightedGO.gameObject.GetComponent<Collider>().bounds.extents, highlightedGO.transform.rotation).Length <= 1 && hit.collider.gameObject == highlightedGO) {// && highlightedGO.GetComponent<Collider>().bounds.Inte) {
 
                         isPickepObj = false;
                         highlightedGO.GetComponent<PickUp>().DropObj();
                         highlightedGO.GetComponent<PickUp>().SetHoldPos(null);
 
-                        if (dropAudioClip!= null && GetComponent<AudioSource>()) {
+                        if (dropAudioClip!= null && GetComponent<AudioSource>() != null) {
                             GetComponent<AudioSource>().PlayOneShot(dropAudioClip);
                         }
 

@@ -51,7 +51,7 @@ public class PickUp : Interactable{
             _collider.isTrigger = true;
         }
 
-        gameObject.layer = 2;
+        //gameObject.layer = 2;
     }
 
     public void DropObj () {

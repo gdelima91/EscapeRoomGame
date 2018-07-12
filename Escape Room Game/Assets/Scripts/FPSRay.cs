@@ -26,6 +26,8 @@ public class FPSRay : MonoBehaviour {
 
     private Collider[] colliders;
     private float cameraDistance;
+
+    private IconManager iconManager;
     
 
     //[HideInInspector]
@@ -38,6 +40,7 @@ public class FPSRay : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         mCamera = Camera.main;
         holdPos = GameObject.Find("HoldPos");
+        iconManager = GetComponent<IconManager>();
 
         if (holdPos != null) {
             holdPosDistance = Vector3.Distance(mCamera.transform.position, holdPos.transform.position);
@@ -80,12 +83,18 @@ public class FPSRay : MonoBehaviour {
                     }
                     highlightedGO = hit.collider.gameObject;
                     highlightedGO.GetComponent<Interactable>().ActivateHighLight();
+
+                    // Set Icon to interactable
+                    iconManager.ChangeSprite(IconManager.IconTypes.interactable);
                 }
             }
             else if (!isPickepObj) {
                 if (highlightedGO != null) {
                     highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                     highlightedGO = null;
+
+                    // Set Icon to default
+                    iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
                 }
             }
         }
@@ -95,6 +104,9 @@ public class FPSRay : MonoBehaviour {
 
                 highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                 highlightedGO = null;
+
+                // Set Icon to default
+                iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
             }
         }
     }
@@ -137,6 +149,9 @@ public class FPSRay : MonoBehaviour {
                             GetComponent<AudioSource>().PlayOneShot(dropAudioClip);
                         }
 
+                        // Set Icon to default
+                        iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
+
                         //print("drop");
                     }
                 }
@@ -153,6 +168,9 @@ public class FPSRay : MonoBehaviour {
                         }
                         //DontDestroyOnLoad(highlightedGO);
                         //highlightedGO.transform.parent = null;
+
+                        // Set Icon to grabbed
+                        iconManager.ChangeSprite(IconManager.IconTypes.grabbed);
                     }
                     else if( highlightedGO.GetComponent<Lever>() != null )
                     {
@@ -167,6 +185,10 @@ public class FPSRay : MonoBehaviour {
                         GasMaskController.instance.hasGasMask = true;
                         Destroy(highlightedGO);
                     }
+                }
+                else {
+                    // Set Icon to empty
+                    iconManager.ChangeSprite(IconManager.IconTypes.empty);
                 }
             }
         }

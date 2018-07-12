@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 19326f1f87f3b734587b6f12e3034162
+timeCreated: 1531380569
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Koch Fette Deutsche Schrift UNZ1A
+  fontNames:
+  - Koch Fette Deutsche Schrift UNZ1A
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: dfa4fa6e0cbf19f44a3791da2c72d231, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

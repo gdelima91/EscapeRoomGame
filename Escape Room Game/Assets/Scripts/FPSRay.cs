@@ -93,7 +93,7 @@ public class FPSRay : MonoBehaviour {
                     highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                     highlightedGO = null;
 
-                    // Set Icon to default
+                    // Set Icon to default // interactable
                     iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
                 }
             }
@@ -105,7 +105,7 @@ public class FPSRay : MonoBehaviour {
                 highlightedGO.GetComponent<Interactable>().DeactivateHighlight();
                 highlightedGO = null;
 
-                // Set Icon to default
+                // Set Icon to default // interactable
                 iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
             }
         }
@@ -149,8 +149,8 @@ public class FPSRay : MonoBehaviour {
                             GetComponent<AudioSource>().PlayOneShot(dropAudioClip);
                         }
 
-                        // Set Icon to default
-                        iconManager.ChangeSprite(IconManager.IconTypes.defaultSprite);
+                        // Set Icon to default // interactable
+                        iconManager.ChangeSprite(IconManager.IconTypes.interactable);
 
                         //print("drop");
                     }
@@ -200,5 +200,9 @@ public class FPSRay : MonoBehaviour {
 
     public void SetHighlightedGO (GameObject go) {
         highlightedGO = go;
+    }
+
+    public IconManager GetIconManager () {
+        return iconManager;
     }
 }

@@ -11,6 +11,7 @@ public class FuseTrigger : MonoBehaviour {
 
     private FPSRay playerGO;
     private Transform[] fuseSlots;
+    private LeverLight leverLight;
     
 
     // Use this for initialization
@@ -22,6 +23,7 @@ public class FuseTrigger : MonoBehaviour {
         }
         playerGO = GameObject.FindGameObjectWithTag("Player").GetComponent<FPSRay>();
 
+        leverLight = transform.parent.GetComponentsInChildren<LeverLight>()[0];
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class FuseTrigger : MonoBehaviour {
                     if (playerGO.GetComponent<FPSRay>().GetHighlightedGO().GetComponent<FuseItem>() != null) {
                         playerGO.SetHighlightedGO(null);
                         playerGO.isPickepObj = false;
+                        playerGO.GetIconManager().ChangeSprite(IconManager.IconTypes.defaultSprite);
                     }
                 }
                 Destroy(other.GetComponent<Interactable>());
@@ -60,6 +63,9 @@ public class FuseTrigger : MonoBehaviour {
             fuseCount++;
             
             if (fuseCount > 3) {
+                if (leverLight) {
+                    leverLight.TurnLight(true);
+                }
                 for (int i = 0; i < thingsToPower.Length; i++) {
                     thingsToPower[i].isGettingElectricity = true;
                 }
